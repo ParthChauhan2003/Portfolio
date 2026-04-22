@@ -1,33 +1,44 @@
-@import 'tailwindcss' source(none);
-@source '../**/*.{js,ts,jsx,tsx}';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
-  --font-sans: 'Inter', sans-serif;
-  --color-google-blue: #1A73E8;
-  --color-google-blue-dark: #1557B0;
-  --color-google-gray-50: #F8F9FA;
-  --color-google-gray-100: #F1F3F4;
-  --color-google-gray-200: #E8EAED;
-  --color-google-gray-800: #202124;
-  --color-google-green: #0F9D58;
+/* Custom Theme Variables */
+:root {
+    --font-sans: 'Inter', sans-serif;
+
+    --color-google-blue: #1A73E8;
+    --color-google-blue-dark: #1557B0;
+
+    --color-google-gray-50: #F8F9FA;
+    --color-google-gray-100: #F1F3F4;
+    --color-google-gray-200: #E8EAED;
+    --color-google-gray-800: #202124;
+
+    --color-google-green: #0F9D58;
 }
 
+/* Base Styles */
 @layer base {
-  body {
-    font-family: var(--font-sans);
-    background-color: var(--color-google-gray-50);
-    color: var(--color-google-gray-800);
-    -webkit-font-smoothing: antialiased;
-  }
+    body {
+        font-family: var(--font-sans);
+        background-color: var(--color-google-gray-50);
+        color: var(--color-google-gray-800);
+        -webkit-font-smoothing: antialiased;
+    }
 }
 
+/* Custom Utilities */
 @layer utilities {
-  .shadow-soft {
-    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-  }
-  .shadow-hover {
-    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
-  }
+    .shadow-soft {
+        box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+            0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    }
+
+    .shadow-hover {
+        box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+            0 4px 8px 3px rgba(60, 64, 67, 0.15);
+    }
 }
 
+/* Optional animation plugin (only if installed) */
 @import 'tw-animate-css';
