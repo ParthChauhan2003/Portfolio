@@ -113,8 +113,8 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
               </ResponsiveContainer>
             </div>
 
-            <div className={`p-6 rounded-2xl border flex items-center ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} shadow-soft h-[220px]`}>
-              <div className="w-1/2">
+            <div className={`p-6 rounded-2xl border flex flex-col sm:flex-row items-center ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} shadow-soft sm:h-[220px]`}>
+              <div className="w-full sm:w-1/2 mb-6 sm:mb-0">
                 <h3 className={`text-lg font-medium mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Bugs Caught</h3>
                 <p className={`text-sm mb-4 font-light ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Distribution of bugs found before production release.</p>
                 <div className="grid grid-cols-2 gap-2">
@@ -126,7 +126,7 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
                   ))}
                 </div>
               </div>
-              <div className="w-1/2 h-full">
+              <div className="w-full sm:w-1/2 h-[200px] sm:h-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie

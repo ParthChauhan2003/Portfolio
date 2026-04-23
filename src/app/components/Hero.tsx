@@ -18,62 +18,82 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide ${darkMode ? 'text-google-blue bg-google-blue/10 border border-google-blue/20' : 'text-google-blue bg-google-blue/10 border border-google-blue/20'}`}
+                className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide ${darkMode ? 'text-blue-400 bg-blue-900/20 border border-blue-500/20' : 'text-blue-600 bg-blue-50 border border-blue-200'}`}
               >
-                QA Engineer / Software Tester
+                Enterprise-Ready Software Quality
               </motion.span>
+              <p className={`text-sm md:text-base font-medium tracking-wide uppercase ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                QA Engineering · Test Automation · Intelligent Testing Strategy
+              </p>
               <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight ${darkMode ? 'text-white' : 'text-[#202124]'}`}>
-                Breaking Bugs, <br />
-                <span className="text-google-blue">Building Quality Software</span>
+                Deliver Software <br />
+                <span className="text-blue-600">with Complete Confidence</span>
               </h1>
-              <p className={`text-lg md:text-xl max-w-xl font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                Hi, I'm Alex. I specialize in manual and automated testing, building robust testing frameworks, and ensuring flawless user experiences across web and mobile platforms.
+              <p className={`text-lg md:text-xl max-w-xl font-light leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                I partner with fast-scaling startups and enterprise teams to uncover critical issues early, reduce regression effort, and ensure seamless, high-quality digital experiences at every release.
               </p>
             </div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 pt-2"
             >
               <a
-                href="#projects"
-                className="inline-flex justify-center items-center px-6 py-3 rounded-md bg-google-blue hover:bg-google-blue-dark text-white font-medium transition-all shadow-sm hover:shadow-md gap-2"
+                href="#contact"
+                className="inline-flex justify-center items-center px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all shadow-lg shadow-blue-500/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95 gap-2"
               >
-                View Work
+                Book a QA Consultation
                 <ArrowRight size={18} />
               </a>
               <a
-                href="#"
-                className={`inline-flex justify-center items-center px-6 py-3 rounded-md border font-medium transition-all gap-2 ${darkMode ? 'border-gray-700 text-google-blue hover:bg-gray-800' : 'border-gray-300 text-google-blue hover:bg-gray-100 bg-white'}`}
+                href="#projects"
+                className={`inline-flex justify-center items-center px-8 py-3 rounded-full border font-medium transition-all hover:-translate-y-0.5 active:scale-95 gap-2 ${darkMode ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'}`}
               >
-                <Download size={18} />
-                Download Resume
+                Explore My Work
               </a>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
-              className={`grid grid-cols-3 gap-6 pt-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}
+              className={`grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}
             >
               <div className="space-y-1">
-                <h4 className={`text-3xl font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>5+</h4>
-                <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Years Experience</p>
+                <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Zero</h4>
+                <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>Critical Defects</p>
+                <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Reaching production</p>
               </div>
               <div className="space-y-1">
-                <h4 className={`text-3xl font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>99%</h4>
-                <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Bug Free Rate</p>
+                <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>65-75%</h4>
+                <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>Faster</p>
+                <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Regression cycles</p>
               </div>
               <div className="space-y-1">
-                <h4 className={`text-3xl font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>12+</h4>
-                <p className={`text-sm ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Projects Tested</p>
+                <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>100%</h4>
+                <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>Coverage</p>
+                <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Of core user journeys</p>
+              </div>
+              <div className="space-y-1">
+                <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>4+</h4>
+                <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>Years</p>
+                <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>QA Engineering</p>
+              </div>
+              <div className="space-y-1">
+                <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>20+</h4>
+                <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>SaaS Products</p>
+                <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Tested & improved</p>
+              </div>
+              <div className="space-y-1">
+                <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Python</h4>
+                <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>& Playwright</p>
+                <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Automation Specialist</p>
               </div>
             </motion.div>
           </motion.div>
@@ -82,41 +102,62 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative"
+            className="relative px-4 lg:px-8"
           >
-            <div className={`relative rounded-2xl overflow-hidden aspect-square lg:aspect-auto lg:h-[550px] shadow-hover border ${darkMode ? 'border-gray-800' : 'border-gray-200 bg-white'}`}>
-              <img
-                src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1080"
-                alt="Alex - QA Engineer"
-                className="w-full h-full object-cover object-center"
-              />
-              
-              {/* Material Design Floating Cards */}
-              <motion.div 
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className={`absolute top-8 right-[-16px] p-4 rounded-xl shadow-hover flex items-center gap-3 border hidden sm:flex ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
+            <div className="relative group">
+              {/* Image Container with overflow hidden */}
+              <div className={`relative rounded-2xl overflow-hidden aspect-square lg:aspect-auto lg:h-[550px] shadow-2xl border transition-transform duration-500 group-hover:scale-[1.01] ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-white'}`}>
+                <img
+                  src="images/QA1.png"
+                  alt="QA Engineering Illustration"
+                  className="w-full h-full object-contain object-center p-4"
+                />
+              </div>
+
+              {/* Material Design Floating Cards - Outside overflow-hidden */}
+              <motion.div
+                initial={{ x: 20, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  y: [0, -12, 0]
+                }}
+                transition={{
+                  x: { delay: 0.8, duration: 0.5 },
+                  opacity: { delay: 0.8, duration: 0.5 },
+                  y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+                }}
+                className={`absolute top-12 -right-6 md:-right-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
               >
-                <div className="bg-google-green/10 text-google-green p-2 rounded-full">
-                  <CheckCircle size={20} />
+                <div className="bg-green-500/10 text-green-500 p-2.5 rounded-full shadow-inner">
+                  <CheckCircle size={22} className="drop-shadow-sm" />
                 </div>
                 <div>
-                  <p className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>All Tests Passed</p>
-                  <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>CI/CD Pipeline</p>
+                  <p className={`text-sm font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>All Tests Passed</p>
+                  <p className={`text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>CI/CD Pipeline Active</p>
                 </div>
               </motion.div>
 
-              <motion.div 
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                className={`absolute bottom-10 left-[-16px] p-4 rounded-xl shadow-hover flex items-center gap-3 border hidden sm:flex ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  y: [0, 12, 0]
+                }}
+                transition={{
+                  x: { delay: 1, duration: 0.5 },
+                  opacity: { delay: 1, duration: 0.5 },
+                  y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }
+                }}
+                className={`absolute bottom-16 -left-6 md:-left-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
               >
-                <div className="bg-red-50 text-red-500 p-2 rounded-full">
-                  <Bug size={20} />
+                <div className="bg-red-500/10 text-red-500 p-2.5 rounded-full shadow-inner">
+                  <Bug size={22} className="drop-shadow-sm" />
                 </div>
                 <div>
-                  <p className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>0 Critical Bugs</p>
-                  <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Production environment</p>
+                  <p className={`text-sm font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>0 Critical Bugs</p>
+                  <p className={`text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Verified in Production</p>
                 </div>
               </motion.div>
             </div>

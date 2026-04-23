@@ -1,86 +1,73 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Award, Code2, Database, TerminalSquare, GitBranch, Layers, ShieldCheck, Zap } from 'lucide-react';
+import { Award, Code2, Database, TerminalSquare, GitBranch, Layers, ShieldCheck, Zap, Search } from 'lucide-react';
 
 interface CertsToolsProps {
   darkMode: boolean;
 }
 
-const certifications = [
-  { title: "ISTQB Certified Tester Foundation Level (CTFL)", date: "2019" },
-  { title: "Certified Agile Tester (CAT)", date: "2021" },
-  { title: "AWS Certified Cloud Practitioner", date: "2023" }
-];
-
-const tools = [
-  { name: "Selenium", icon: <Code2 size={24} />, color: "text-green-500" },
-  { name: "Cypress", icon: <TerminalSquare size={24} />, color: "text-teal-400" },
-  { name: "Postman", icon: <Zap size={24} />, color: "text-orange-500" },
-  { name: "JIRA", icon: <Layers size={24} />, color: "text-blue-500" },
-  { name: "SQL", icon: <Database size={24} />, color: "text-indigo-400" },
-  { name: "Git", icon: <GitBranch size={24} />, color: "text-red-500" },
-  { name: "Security", icon: <ShieldCheck size={24} />, color: "text-purple-500" },
-  { name: "JMeter", icon: <Zap size={24} />, color: "text-red-600" },
+const toolCategories = [
+  {
+    title: "Automation",
+    icon: <Code2 className="text-blue-500" />,
+    items: ["Playwright (Python)", "Pytest", "CI/CD Pipelines"]
+  },
+  {
+    title: "Manual Testing",
+    icon: <Search className="text-green-500" />,
+    items: ["Exploratory Testing", "Cross-browser validation", "UAT support"]
+  },
+  {
+    title: "API Testing",
+    icon: <Database className="text-purple-500" />,
+    items: ["Postman", "REST API validation", "Data integrity checks"]  
+  },
+  {
+    title: "Workflow",
+    icon: <Layers className="text-orange-500" />,
+    items: ["Jira", "Notion", "Trello", "Git"]
+  }
 ];
 
 export const CertsTools: React.FC<CertsToolsProps> = ({ darkMode }) => {
   return (
-    <section id="certifications" className={`py-20 ${darkMode ? 'bg-slate-950' : 'bg-slate-50'}`}>
+    <section id="tools" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Certifications */}
-          <div>
-            <div className="mb-10">
-              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>Certifications</h2>
-              <div className="w-16 h-1 bg-teal-500 rounded-full"></div>
-            </div>
-            
-            <div className="space-y-4">
-              {certifications.map((cert, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className={`p-5 rounded-xl border flex items-center justify-between transition-all hover:scale-[1.02] ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-teal-500/10 flex items-center justify-center text-teal-500">
-                      <Award size={20} />
-                    </div>
-                    <h4 className={`font-semibold text-sm sm:text-base ${darkMode ? 'text-slate-200' : 'text-slate-800'}`}>{cert.title}</h4>
-                  </div>
-                  <span className={`text-sm font-bold ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>{cert.date}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4 ${darkMode ? 'text-blue-400 bg-blue-900/20' : 'text-blue-600 bg-blue-50'}`}>
+            Tools & Technologies
+          </span>
+          <h2 className={`text-3xl md:text-4xl font-bold tracking-tight mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            My QA Toolkit
+          </h2>
+          <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-8"></div>
+        </div>
 
-          {/* Tools */}
-          <div>
-            <div className="mb-10">
-              <h2 className={`text-3xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-slate-900'}`}>Tools & Tech Stack</h2>
-              <div className="w-16 h-1 bg-teal-500 rounded-full"></div>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {tools.map((tool, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05, duration: 0.4 }}
-                  className={`flex flex-col items-center justify-center p-6 rounded-xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-slate-900 border-slate-800 hover:border-teal-500/30' : 'bg-white border-slate-200 hover:border-teal-500/30'}`}
-                >
-                  <div className={`mb-3 ${tool.color}`}>{tool.icon}</div>
-                  <span className={`text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>{tool.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {toolCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className={`p-8 rounded-2xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-100'}`}
+            >
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${darkMode ? 'bg-gray-900' : 'bg-white shadow-sm'}`}>
+                {category.icon}
+              </div>
+              <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{category.title}</h3>
+              <ul className="space-y-4">
+                {category.items.map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0"></div>
+                    <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
         </div>
 
       </div>

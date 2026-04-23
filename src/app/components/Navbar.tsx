@@ -14,10 +14,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
 
   const navLinks = [
     { name: 'About', href: '#about' },
+    { name: 'Expertise', href: '#expertise' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Services', href: '#services' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
@@ -55,16 +55,26 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'py-2 shadow-soft' : 'py-4'} ${darkMode ? 'bg-gray-900/95 backdrop-blur-md' : 'bg-white/95 backdrop-blur-md'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-5xl z-50 px-4 transition-all duration-500">
+      <nav 
+        className={`rounded-full border backdrop-blur-xl transition-all duration-300 px-4 py-2.5 ${
+          scrolled 
+            ? (darkMode ? 'bg-slate-900/80 border-slate-700/50 shadow-[0_8px_30px_rgba(0,0,0,0.3)] shadow-blue-500/10' : 'bg-white/80 border-gray-200/50 shadow-xl shadow-gray-200/50') 
+            : (darkMode ? 'bg-slate-900/40 border-slate-800/30 shadow-lg' : 'bg-white/40 border-white/50 shadow-sm')
+        }`}
+      >
         <div className="flex justify-between items-center h-12">
-          <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex-shrink-0 flex items-center gap-2 cursor-pointer group">
-            <div className={`p-2 rounded-lg transition-colors ${darkMode ? 'bg-gray-800 group-hover:bg-google-blue/20' : 'bg-google-blue/10 group-hover:bg-google-blue/20'}`}>
-              <Terminal className={`w-6 h-6 ${darkMode ? 'text-google-blue' : 'text-google-blue'}`} />
+          {/* Left: Logo & Name */}
+          <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
+              <span className="text-white font-bold text-sm tracking-wider">PC</span>
             </div>
-            <span className={`font-bold text-xl tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>QA<span className="text-google-blue">.</span>Portfolio</span>
+            <span className={`font-bold text-lg tracking-tight hidden sm:block transition-colors ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+              Parth Chauhan
+            </span>
           </a>
           
+          {/* Center: Navigation Links (Desktop) */}
           <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
@@ -73,49 +83,69 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-full transition-colors ${isActive ? (darkMode ? 'text-google-blue bg-google-blue/10' : 'text-google-blue bg-google-blue/5') : (darkMode ? 'text-gray-300 hover:text-white hover:bg-gray-800' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100')}`}
+                  className={`relative px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
+                    isActive 
+                      ? (darkMode ? 'text-white bg-slate-800/80 shadow-inner' : 'text-blue-700 bg-blue-50/80 shadow-sm') 
+                      : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/50')
+                  }`}
                 >
                   {link.name}
                 </a>
               );
             })}
-            <div className="pl-4 ml-4 border-l border-gray-200 dark:border-gray-700">
-              <button
-                onClick={toggleDarkMode}
-                className={`p-2 rounded-full transition-colors ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            </div>
           </div>
 
+          {/* Right: Actions (Desktop) */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={toggleDarkMode}
+              className={`p-2.5 rounded-full transition-all duration-300 hover:scale-110 ${
+                darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/80'
+              }`}
+              aria-label="Toggle dark mode"
+            >
+              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="px-6 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-blue-500/30 active:scale-95"
+            >
+              Hire Me
+            </a>
+          </div>
+
+          {/* Mobile Actions */}
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`p-2 rounded-full transition-colors ${darkMode ? 'text-slate-300 hover:bg-slate-800/80' : 'text-gray-600 hover:bg-gray-100/80'}`}
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-lg ${darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`p-2 rounded-full transition-colors ${darkMode ? 'text-slate-300 hover:bg-slate-800/80' : 'text-gray-600 hover:bg-gray-100/80'}`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
-      </div>
+      </nav>
 
+      {/* Mobile Menu Collapsible */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className={`md:hidden overflow-hidden ${darkMode ? 'bg-gray-900 border-t border-gray-800' : 'bg-white border-t border-gray-100 shadow-soft'}`}
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className={`absolute top-20 left-4 right-4 rounded-3xl overflow-hidden backdrop-blur-xl border shadow-2xl md:hidden ${
+              darkMode ? 'bg-slate-900/95 border-slate-700/50' : 'bg-white/95 border-gray-200/50'
+            }`}
           >
-            <div className="px-4 pt-2 pb-4 space-y-1">
+            <div className="p-4 space-y-2">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href.substring(1);
                 return (
@@ -123,16 +153,29 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`block px-4 py-3 rounded-lg text-base font-medium ${isActive ? (darkMode ? 'text-google-blue bg-google-blue/10' : 'text-google-blue bg-google-blue/5') : (darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-600 hover:bg-gray-50')}`}
+                    className={`block px-4 py-3.5 rounded-2xl text-base font-semibold transition-all ${
+                      isActive 
+                        ? (darkMode ? 'text-white bg-slate-800/80' : 'text-blue-700 bg-blue-50') 
+                        : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50')
+                    }`}
                   >
                     {link.name}
                   </a>
                 );
               })}
+              <div className="pt-4 mt-2 border-t border-gray-200/50 dark:border-slate-800/50">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleNavClick(e, '#contact')}
+                  className="block w-full text-center px-4 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all shadow-lg shadow-blue-500/30 active:scale-95"
+                >
+                  Hire Me
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </div>
   );
 };

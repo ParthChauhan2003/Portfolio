@@ -1,0 +1,47 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Subtle Shadow / Depth -->
+  <circle cx="128" cy="136" r="110" fill="#312e81" filter="blur(12px)" opacity="0.3" />
+  
+  <!-- Main Gradient Background -->
+  <circle cx="128" cy="128" r="120" fill="url(#brandGradient)" />
+  
+  <!-- Top Highlight for Glass/Premium Feel -->
+  <circle cx="128" cy="128" r="118" stroke="url(#topHighlight)" stroke-width="4" opacity="0.5" />
+  
+  <!-- Bottom Shadow for 3D Feel -->
+  <circle cx="128" cy="128" r="118" stroke="url(#bottomShadow)" stroke-width="4" opacity="0.2" />
+
+  <!-- The Text "PC" -->
+  <text 
+    x="128" 
+    y="168" 
+    font-family="system-ui, -apple-system, sans-serif" 
+    font-weight="800" 
+    font-size="116" 
+    fill="#ffffff" 
+    text-anchor="middle" 
+    letter-spacing="-2"
+    style="filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.2));"
+  >PC</text>
+
+  <defs>
+    <!-- Vibrant Blue to Violet Gradient -->
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />    <!-- blue-500 -->
+      <stop offset="50%" stop-color="#6366f1" />   <!-- indigo-500 -->
+      <stop offset="100%" stop-color="#8b5cf6" />  <!-- violet-500 -->
+    </linearGradient>
+
+    <!-- Highlights -->
+    <linearGradient id="topHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Shadows -->
+    <linearGradient id="bottomShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="50%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="1" />
+    </linearGradient>
+  </defs>
+</svg>

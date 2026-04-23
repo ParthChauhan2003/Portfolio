@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { ReactLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { Expertise } from './components/Expertise';
+import { Workflow } from './components/Workflow';
+import { Pipeline } from './components/Pipeline';
+import { Services } from './components/Services';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
-import { Artifacts } from './components/Artifacts';
 import { Experience } from './components/Experience';
 import { CertsTools } from './components/CertsTools';
 import { Contact } from './components/Contact';
@@ -26,7 +30,8 @@ export default function App() {
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300 ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-[#F8F9FA] text-[#202124]'}`}>
+    <ReactLenis root>
+      <div className={`min-h-screen font-sans transition-colors duration-300 ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-[#F8F9FA] text-[#202124]'}`}>
       <AnimatePresence>
         {loading && (
           <motion.div
@@ -50,16 +55,20 @@ export default function App() {
           <main>
             <Hero darkMode={darkMode} />
             <About darkMode={darkMode} />
-            <Skills darkMode={darkMode} />
-            <Projects darkMode={darkMode} />
-            <Artifacts darkMode={darkMode} />
-            <Experience darkMode={darkMode} />
+            <Expertise darkMode={darkMode} />
+            <Workflow darkMode={darkMode} />
+            <Pipeline darkMode={darkMode} />
+            <Services darkMode={darkMode} />
             <CertsTools darkMode={darkMode} />
+            <Projects darkMode={darkMode} />
+            <Experience darkMode={darkMode} />
+            <Skills darkMode={darkMode} />
             <Contact darkMode={darkMode} />
           </main>
           <Footer darkMode={darkMode} />
         </>
       )}
     </div>
+    </ReactLenis>
   );
 }

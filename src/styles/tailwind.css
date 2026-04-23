@@ -1,9 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Custom Theme Variables */
-:root {
+@theme {
     --font-sans: 'Inter', sans-serif;
 
     --color-google-blue: #1A73E8;
@@ -19,6 +17,10 @@
 
 /* Base Styles */
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    
     body {
         font-family: var(--font-sans);
         background-color: var(--color-google-gray-50);
