@@ -65,7 +65,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               transition={{ delay: 0.7 }}
               className={`grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}
             >
-              <div className="space-y-1">
+              {/* <div className="space-y-1">
                 <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Zero</h4>
                 <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>Critical Defects</p>
                 <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Reaching production</p>
@@ -94,7 +94,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 <h4 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Python</h4>
                 <p className={`text-xs uppercase tracking-wide font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>& Playwright</p>
                 <p className={`text-xs ${darkMode ? 'text-gray-500' : 'text-gray-500'}`}>Automation Specialist</p>
-              </div>
+              </div> */}
             </motion.div>
           </motion.div>
 
