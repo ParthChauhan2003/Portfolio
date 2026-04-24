@@ -15,7 +15,9 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">P</div>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-sm">
+              <span className="text-white font-bold text-[14px] tracking-wider">PC</span>
+            </div>
             <span className={`font-bold text-lg tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>Parth Chauhan</span>
           </div>
 

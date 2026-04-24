@@ -106,12 +106,13 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
           >
             <div className="relative group">
               {/* Image Container with overflow hidden */}
-              <div className={`relative rounded-2xl overflow-hidden aspect-square lg:aspect-auto lg:h-[550px] shadow-2xl border transition-transform duration-500 group-hover:scale-[1.01] ${darkMode ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-white'}`}>
+              <div className={`relative rounded-2xl overflow-hidden aspect-square lg:aspect-auto lg:h-[550px] shadow-2xl border transition-transform duration-500 group-hover:scale-[1.01] ${darkMode ? 'border-gray-800 bg-[#080B12]' : 'border-gray-200 bg-white'}`}>
                 <img
-                  src="images/QA1.png"
+                  src="images/QA_Hero.png"
                   alt="QA Engineering Illustration"
-                  className="w-full h-full object-contain object-center p-4"
+                  className="w-full h-full object-cover object-center"
                 />
+                <div className={`absolute inset-0 pointer-events-none ${darkMode ? 'bg-gradient-to-t from-gray-900/40 via-transparent to-transparent' : 'bg-gradient-to-t from-white/20 via-transparent to-transparent'}`} />
               </div>
 
               {/* Material Design Floating Cards - Outside overflow-hidden */}

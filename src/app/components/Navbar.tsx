@@ -23,10 +23,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      
+
       const sections = navLinks.map(link => link.href.substring(1));
       sections.unshift('hero'); // Add hero to sections
-      
+
       const current = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
         }
         return false;
       });
-      
+
       if (current) {
         setActiveSection(current);
       }
@@ -56,24 +56,23 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <div className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-5xl z-50 px-4 transition-all duration-500">
-      <nav 
-        className={`rounded-full border backdrop-blur-xl transition-all duration-300 px-4 py-2.5 ${
-          scrolled 
-            ? (darkMode ? 'bg-slate-900/80 border-slate-700/50 shadow-[0_8px_30px_rgba(0,0,0,0.3)] shadow-blue-500/10' : 'bg-white/80 border-gray-200/50 shadow-xl shadow-gray-200/50') 
-            : (darkMode ? 'bg-slate-900/40 border-slate-800/30 shadow-lg' : 'bg-white/40 border-white/50 shadow-sm')
-        }`}
+      <nav
+        className={`rounded-full border backdrop-blur-xl transition-all duration-300 px-4 py-2.5 ${scrolled
+          ? (darkMode ? 'bg-slate-900/80 border-slate-700/50 shadow-[0_8px_30px_rgba(0,0,0,0.3)] shadow-blue-500/10' : 'bg-white/80 border-gray-200/50 shadow-xl shadow-gray-200/50')
+          : (darkMode ? 'bg-slate-900/40 border-slate-800/30 shadow-lg' : 'bg-white/40 border-white/50 shadow-sm')
+          }`}
       >
         <div className="flex justify-between items-center h-12">
           {/* Left: Logo & Name */}
           <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
-              <span className="text-white font-bold text-sm tracking-wider">PC</span>
+              <span className="text-white  font-bold text-sm tracking-wide">PC</span>
             </div>
             <span className={`font-bold text-lg tracking-tight hidden sm:block transition-colors ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               Parth Chauhan
             </span>
           </a>
-          
+
           {/* Center: Navigation Links (Desktop) */}
           <div className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => {
@@ -83,11 +82,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${
-                    isActive 
-                      ? (darkMode ? 'text-white bg-slate-800/80 shadow-inner' : 'text-blue-700 bg-blue-50/80 shadow-sm') 
-                      : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/50')
-                  }`}
+                  className={`relative px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${isActive
+                    ? (darkMode ? 'text-white bg-slate-800/80 shadow-inner' : 'text-blue-700 bg-blue-50/80 shadow-sm')
+                    : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/50')
+                    }`}
                 >
                   {link.name}
                 </a>
@@ -99,9 +97,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={toggleDarkMode}
-              className={`p-2.5 rounded-full transition-all duration-300 hover:scale-110 ${
-                darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/80'
-              }`}
+              className={`p-2.5 rounded-full transition-all duration-300 hover:scale-110 ${darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/80'
+                }`}
               aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
@@ -136,14 +133,13 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
       {/* Mobile Menu Collapsible */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: -10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className={`absolute top-20 left-4 right-4 rounded-3xl overflow-hidden backdrop-blur-xl border shadow-2xl md:hidden ${
-              darkMode ? 'bg-slate-900/95 border-slate-700/50' : 'bg-white/95 border-gray-200/50'
-            }`}
+            className={`absolute top-20 left-4 right-4 rounded-3xl overflow-hidden backdrop-blur-xl border shadow-2xl md:hidden ${darkMode ? 'bg-slate-900/95 border-slate-700/50' : 'bg-white/95 border-gray-200/50'
+              }`}
           >
             <div className="p-4 space-y-2">
               {navLinks.map((link) => {
@@ -153,11 +149,10 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                     key={link.name}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className={`block px-4 py-3.5 rounded-2xl text-base font-semibold transition-all ${
-                      isActive 
-                        ? (darkMode ? 'text-white bg-slate-800/80' : 'text-blue-700 bg-blue-50') 
-                        : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50')
-                    }`}
+                    className={`block px-4 py-3.5 rounded-2xl text-base font-semibold transition-all ${isActive
+                      ? (darkMode ? 'text-white bg-slate-800/80' : 'text-blue-700 bg-blue-50')
+                      : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50')
+                      }`}
                   >
                     {link.name}
                   </a>
