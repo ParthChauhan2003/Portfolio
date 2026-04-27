@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
           </div>
 
           <p className={`text-sm text-center md:text-left ${darkMode ? 'text-gray-500' : 'text-gray-600'}`}>
-            © {new Date().getFullYear()} Parth Chauhan | Available for global freelance and contract opportunities
+            © {new Date().getFullYear()} Parth Chauhan. All rights reserved. | Available for global freelance and contract opportunities
           </p>
 
           <button
