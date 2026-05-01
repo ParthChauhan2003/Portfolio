@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'motion/react';
 import { animate } from 'motion';
+import { useLenis, ReactLenis } from 'lenis/react';
 import { 
   X, 
   ArrowRight, 
@@ -64,6 +65,7 @@ const Counter = ({ value, duration = 2 }: { value: number; duration?: number }) 
 };
 
 export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ darkMode }) => {
+  const lenis = useLenis();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -76,13 +78,16 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      lenis?.stop();
     } else {
       document.body.style.overflow = 'unset';
+      lenis?.start();
     }
     return () => {
       document.body.style.overflow = 'unset';
+      lenis?.start();
     };
-  }, [isOpen]);
+  }, [isOpen, lenis]);
 
   if (!mounted) return null;
 
@@ -202,7 +207,20 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
       <motion.button
         onClick={() => setIsOpen(true)}
         initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
+        animate={{ 
+          x: 0, 
+          opacity: 1,
+          y: [0, -10, 0]
+        }}
+        transition={{
+          x: { duration: 0.5 },
+          opacity: { duration: 0.5 },
+          y: { 
+            repeat: Infinity, 
+            duration: 4, 
+            ease: "easeInOut" 
+          }
+        }}
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
         className="fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex items-center group"
@@ -238,15 +256,20 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
 
             {/* Side Panel */}
             <motion.div
-              initial={{ x: '100%', opacity: 0.5 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: '100%', opacity: 0.5 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              initial={{ x: '100%', opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
+              animate={{ x: 0, opacity: 1, scale: 1, filter: 'blur(0px)' }}
+              exit={{ x: '100%', opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
+              transition={{ 
+                type: 'spring', 
+                damping: 30, 
+                stiffness: 150,
+                mass: 1,
+                filter: { duration: 0.4 }
+              }}
               className={`fixed top-0 right-0 h-screen z-[10001] shadow-[-20px_0_50px_rgba(0,0,0,0.3)] flex flex-col
-                w-full md:w-[60%] lg:w-[45%] xl:w-[40%]
-                ${darkMode ? 'bg-[#0F172A]/90 text-white' : 'bg-white/90 text-slate-900'}
-                backdrop-blur-2xl border-l ${darkMode ? 'border-white/10' : 'border-slate-200'}
-                rounded-l-[32px] md:rounded-l-[40px] overflow-hidden`}
+                w-full
+                ${darkMode ? 'bg-[#0F172A]/95 text-white' : 'bg-white/95 text-slate-900'}
+                backdrop-blur-3xl overflow-hidden`}
             >
               {/* Sticky Header with Close Button */}
               <div className="sticky top-0 z-50 flex items-center justify-between p-6 md:p-8 backdrop-blur-xl bg-transparent">
@@ -270,7 +293,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
               </div>
 
               {/* Scrollable Content Area */}
-              <div className="flex-1 overflow-y-auto custom-scrollbar px-6 md:px-12 pb-20">
+              <ReactLenis className="flex-1 overflow-y-auto custom-scrollbar px-6 md:px-24 lg:px-48 pb-20">
                 <div className="max-w-3xl mx-auto space-y-20">
                   
                   {/* Hero Introduction */}
@@ -307,7 +330,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
 
                   {/* Stats Counters */}
                   <section>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       {stats.map((stat, i) => (
                         <motion.div
                           key={i}
@@ -338,7 +361,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
                       <h3 className="text-sm font-black uppercase tracking-[0.3em] opacity-40">Expertise</h3>
                       <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-20" />
                     </div>
-                    <div className="grid gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {highlights.map((item, i) => (
                         <motion.div
                           key={i}
@@ -431,7 +454,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
                       <h3 className="text-sm font-black uppercase tracking-[0.3em] opacity-40">Projects</h3>
                       <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-20" />
                     </div>
-                    <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {projects.map((project, i) => (
                         <motion.div
                           key={i}
@@ -483,7 +506,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
                       <h3 className="text-sm font-black uppercase tracking-[0.3em] opacity-40">Services</h3>
                       <div className="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-20" />
                     </div>
-                    <div className="grid gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {services.map((service, i) => (
                         <div key={i} className={`p-6 rounded-3xl border flex items-center gap-6 ${darkMode ? 'bg-white/5 border-white/10' : 'bg-slate-50 border-slate-100'}`}>
                           <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center shrink-0">
@@ -548,7 +571,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
                   </section>
 
                 </div>
-              </div>
+              </ReactLenis>
 
               {/* Shine Effect Overlay */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-l-[40px]">
