@@ -225,14 +225,14 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   {errors.projectType && <p className="mt-1 text-xs text-red-500">{errors.projectType}</p>}
                 </div>
                 <div>
-                  <label htmlFor="message" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Message <span className="text-red-500">*</span></label>
+                  <label htmlFor="message" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Details <span className="text-red-500">*</span></label>
                   <textarea
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
                     data-lenis-prevent="true"
-                    placeholder="Tell me about your product challenges..."
+                    placeholder="Tell me about your project, timeline, and requirements..."
                     className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all resize-none custom-scrollbar overscroll-contain ${
                       errors.message 
                         ? 'border-red-500 focus:ring-red-500/50' 
