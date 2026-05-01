@@ -7,8 +7,8 @@ interface ContactProps {
 }
 
 export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', projectType: '', message: '' });
+  const [errors, setErrors] = useState({ name: '', email: '', projectType: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -16,7 +16,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
     if (errors[id as keyof typeof errors]) {
@@ -27,7 +27,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let newErrors = { name: '', email: '', message: '' };
+    let newErrors = { name: '', email: '', projectType: '', message: '' };
     let isValid = true;
 
     if (!formData.name.trim()) {
@@ -43,6 +43,11 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
       isValid = false;
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
+      isValid = false;
+    }
+
+    if (!formData.projectType.trim()) {
+      newErrors.projectType = 'Project type is required';
       isValid = false;
     }
 
@@ -62,7 +67,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
       setTimeout(() => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', projectType: '', message: '' });
         
         // Reset success message after 3 seconds
         setTimeout(() => setSubmitSuccess(false), 3000);
@@ -164,7 +169,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               <h3 className={`text-xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Start a Free QA Consultation</h3>
               <div className="space-y-6">
                 <div>
-                  <label htmlFor="name" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Name</label>
+                  <label htmlFor="name" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Name <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     id="name"
@@ -180,7 +185,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="email" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Email</label>
+                  <label htmlFor="email" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Email <span className="text-red-500">*</span></label>
                   <input
                     type="email"
                     id="email"
@@ -196,7 +201,31 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
                 </div>
                 <div>
-                  <label htmlFor="message" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Message</label>
+                  <label htmlFor="projectType" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Type <span className="text-red-500">*</span></label>
+                  <select
+                    id="projectType"
+                    value={formData.projectType}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all ${
+                      errors.projectType 
+                        ? 'border-red-500 focus:ring-red-500/50' 
+                        : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
+                    } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} ${
+                      formData.projectType === '' && darkMode ? 'text-gray-600' : formData.projectType === '' ? 'text-gray-400' : ''
+                    }`}
+                  >
+                    <option value="" disabled className={darkMode ? "text-gray-600" : "text-gray-400"}>Select a project type</option>
+                    <option value="Test Automation" className={darkMode ? "text-white" : "text-gray-900"}>Test Automation</option>
+                    <option value="Manual Testing" className={darkMode ? "text-white" : "text-gray-900"}>Manual Testing</option>
+                    <option value="API Testing" className={darkMode ? "text-white" : "text-gray-900"}>API Testing</option>
+                    <option value="Performance Testing" className={darkMode ? "text-white" : "text-gray-900"}>Performance Testing</option>
+                    <option value="QA Consulting" className={darkMode ? "text-white" : "text-gray-900"}>QA Consulting</option>
+                    <option value="Other" className={darkMode ? "text-white" : "text-gray-900"}>Other</option>
+                  </select>
+                  {errors.projectType && <p className="mt-1 text-xs text-red-500">{errors.projectType}</p>}
+                </div>
+                <div>
+                  <label htmlFor="message" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Message <span className="text-red-500">*</span></label>
                   <textarea
                     id="message"
                     value={formData.message}
