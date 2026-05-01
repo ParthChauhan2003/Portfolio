@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, ChevronDown } from 'lucide-react';
 
 interface ContactProps {
   darkMode: boolean;
@@ -202,26 +202,29 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <label htmlFor="projectType" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Type <span className="text-red-500">*</span></label>
-                  <select
-                    id="projectType"
-                    value={formData.projectType}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all ${
-                      errors.projectType 
-                        ? 'border-red-500 focus:ring-red-500/50' 
-                        : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
-                    } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} ${
-                      formData.projectType === '' && darkMode ? 'text-gray-600' : formData.projectType === '' ? 'text-gray-400' : ''
-                    }`}
-                  >
-                    <option value="" disabled className={darkMode ? "text-gray-600" : "text-gray-400"}>Select a project type</option>
-                    <option value="Test Automation" className={darkMode ? "text-white" : "text-gray-900"}>Test Automation</option>
-                    <option value="Manual Testing" className={darkMode ? "text-white" : "text-gray-900"}>Manual Testing</option>
-                    <option value="API Testing" className={darkMode ? "text-white" : "text-gray-900"}>API Testing</option>
-                    <option value="Performance Testing" className={darkMode ? "text-white" : "text-gray-900"}>Performance Testing</option>
-                    <option value="QA Consulting" className={darkMode ? "text-white" : "text-gray-900"}>QA Consulting</option>
-                    <option value="Other" className={darkMode ? "text-white" : "text-gray-900"}>Other</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      id="projectType"
+                      value={formData.projectType}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all appearance-none cursor-pointer ${
+                        errors.projectType 
+                          ? 'border-red-500 focus:ring-red-500/50' 
+                          : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
+                      } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} ${
+                        formData.projectType === '' && darkMode ? 'text-gray-600' : formData.projectType === '' ? 'text-gray-400' : ''
+                      }`}
+                    >
+                      <option value="" disabled className={darkMode ? "text-gray-600" : "text-gray-400"}>Select a project type</option>
+                      <option value="Test Automation" className={darkMode ? "text-white" : "text-gray-900"}>Test Automation</option>
+                      <option value="Manual Testing" className={darkMode ? "text-white" : "text-gray-900"}>Manual Testing</option>
+                      <option value="API Testing" className={darkMode ? "text-white" : "text-gray-900"}>API Testing</option>
+                      <option value="Performance Testing" className={darkMode ? "text-white" : "text-gray-900"}>Performance Testing</option>
+                      <option value="QA Consulting" className={darkMode ? "text-white" : "text-gray-900"}>QA Consulting</option>
+                      <option value="Other" className={darkMode ? "text-white" : "text-gray-900"}>Other</option>
+                    </select>
+                    <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+                  </div>
                   {errors.projectType && <p className="mt-1 text-xs text-red-500">{errors.projectType}</p>}
                 </div>
                 <div>
