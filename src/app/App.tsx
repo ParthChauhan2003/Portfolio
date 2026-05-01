@@ -14,6 +14,7 @@ import { Experience } from './components/Experience';
 import { CertsTools } from './components/CertsTools';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { FloatingSidePortfolio } from './components/FloatingSidePortfolio';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false); // Default to light mode for Google style
@@ -65,6 +66,7 @@ export default function App() {
             <Skills darkMode={darkMode} />
             <Contact darkMode={darkMode} />
           </main>
+          <FloatingSidePortfolio darkMode={darkMode} />
           <Footer darkMode={darkMode} />
         </>
       )}
