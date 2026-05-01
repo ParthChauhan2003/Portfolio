@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Linkedin, Github, Send, ChevronDown } from 'lucide-react';
 
 interface ContactProps {
@@ -11,6 +11,16 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
   const [errors, setErrors] = useState({ name: '', email: '', projectType: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const projectTypeOptions = [
+    "Test Automation",
+    "Manual Testing",
+    "API Testing",
+    "Performance Testing",
+    "QA Consulting",
+    "Other"
+  ];
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -203,27 +213,62 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 <div>
                   <label htmlFor="projectType" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Type <span className="text-red-500">*</span></label>
                   <div className="relative">
-                    <select
-                      id="projectType"
-                      value={formData.projectType}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all appearance-none cursor-pointer ${
+                    <div
+                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      className={`w-full px-4 py-3 rounded-xl border outline-none transition-all cursor-pointer flex items-center justify-between ${
                         errors.projectType 
-                          ? 'border-red-500 focus:ring-red-500/50' 
-                          : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
-                      } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'} ${
-                        formData.projectType === '' && darkMode ? 'text-gray-600' : formData.projectType === '' ? 'text-gray-400' : ''
-                      }`}
+                          ? 'border-red-500 ring-2 ring-red-500/50' 
+                          : isDropdownOpen 
+                            ? `ring-2 ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
+                            : `${darkMode ? 'border-gray-700' : 'border-gray-200'} hover:border-blue-500/50`
+                      } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}
                     >
-                      <option value="" disabled className={darkMode ? "text-gray-600" : "text-gray-400"}>Select a project type</option>
-                      <option value="Test Automation" className={darkMode ? "text-white" : "text-gray-900"}>Test Automation</option>
-                      <option value="Manual Testing" className={darkMode ? "text-white" : "text-gray-900"}>Manual Testing</option>
-                      <option value="API Testing" className={darkMode ? "text-white" : "text-gray-900"}>API Testing</option>
-                      <option value="Performance Testing" className={darkMode ? "text-white" : "text-gray-900"}>Performance Testing</option>
-                      <option value="QA Consulting" className={darkMode ? "text-white" : "text-gray-900"}>QA Consulting</option>
-                      <option value="Other" className={darkMode ? "text-white" : "text-gray-900"}>Other</option>
-                    </select>
-                    <ChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none transition-colors ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+                      <span className={formData.projectType === '' ? (darkMode ? 'text-gray-600' : 'text-gray-400') : ''}>
+                        {formData.projectType || 'Select a project type'}
+                      </span>
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''} ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
+                    </div>
+
+                    {/* Custom Dropdown Options */}
+                    <AnimatePresence>
+                      {isDropdownOpen && (
+                        <>
+                          <div className="fixed inset-0 z-40" onClick={() => setIsDropdownOpen(false)}></div>
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            data-lenis-prevent="true"
+                            className={`absolute w-full mt-2 rounded-xl border shadow-xl z-50 max-h-60 overflow-y-auto custom-scrollbar overscroll-contain ${
+                              darkMode ? 'bg-gray-800 border-gray-700 shadow-black/50' : 'bg-white border-gray-100 shadow-gray-200/50'
+                            }`}
+                          >
+                            <ul className="py-2">
+                              {projectTypeOptions.map((option) => (
+                                <li
+                                  key={option}
+                                  onClick={() => {
+                                    setFormData(prev => ({ ...prev, projectType: option }));
+                                    if (errors.projectType) {
+                                      setErrors(prev => ({ ...prev, projectType: '' }));
+                                    }
+                                    setIsDropdownOpen(false);
+                                  }}
+                                  className={`px-4 py-3 cursor-pointer transition-colors ${
+                                    formData.projectType === option
+                                      ? (darkMode ? 'bg-blue-900/40 text-blue-400 font-medium' : 'bg-blue-50 text-blue-700 font-medium')
+                                      : (darkMode ? 'text-gray-300 hover:bg-gray-700/50' : 'text-gray-700 hover:bg-gray-50')
+                                  }`}
+                                >
+                                  {option}
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        </>
+                      )}
+                    </AnimatePresence>
                   </div>
                   {errors.projectType && <p className="mt-1 text-xs text-red-500">{errors.projectType}</p>}
                 </div>
