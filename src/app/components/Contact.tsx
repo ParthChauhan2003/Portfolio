@@ -33,6 +33,9 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
       isValid = false;
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters.';
+      isValid = false;
     }
 
     if (!formData.email.trim()) {
