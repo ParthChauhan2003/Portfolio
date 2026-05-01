@@ -95,6 +95,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
 
           {/* Right: Actions (Desktop) */}
           <div className="hidden md:flex items-center gap-3">
+            <div className={`w-px h-5 mr-1 ${darkMode ? 'bg-slate-600' : 'bg-gray-400'}`}></div>
             <button
               onClick={toggleDarkMode}
               className={`p-2.5 rounded-full transition-all duration-300 hover:scale-110 ${darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/80'
