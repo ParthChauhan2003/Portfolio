@@ -232,7 +232,9 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
           
           {/* Tab Pill */}
           <div className="relative bg-gradient-to-b from-blue-600 via-indigo-600 to-violet-700 text-white px-3 py-10 rounded-l-3xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] flex flex-col items-center gap-4 border-l border-t border-b border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)]">
-            <User className="w-5 h-5 mb-2 group-hover:rotate-12 transition-transform" />
+            <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+              <span className="text-white font-black text-[10px] tracking-tighter">PC</span>
+            </div>
             <span className="[writing-mode:vertical-lr] rotate-180 text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap">
               View Portfolio
             </span>
@@ -274,11 +276,11 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
               {/* Sticky Header with Close Button */}
               <div className="sticky top-0 z-50 flex items-center justify-between p-6 md:p-8 backdrop-blur-xl bg-transparent">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <User className="w-5 h-5 text-white" />
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <span className="text-white font-bold text-sm tracking-wide">PC</span>
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold tracking-tight">Tech Portfolio</h2>
+                    <h2 className="text-xl font-bold tracking-tight">Parth Chauhan</h2>
                     <p className={`text-xs font-medium ${darkMode ? 'text-blue-400' : 'text-blue-600'} uppercase tracking-widest`}>QA Specialist</p>
                   </div>
                 </div>
