@@ -44,7 +44,7 @@ import {
   TestTube
 } from 'lucide-react';
 
-interface FloatingSidePortfolioProps {
+interface FloatingSideProjectsProps {
   darkMode: boolean;
 }
 
@@ -64,7 +64,7 @@ const Counter = ({ value, duration = 2 }: { value: number; duration?: number }) 
   return <span>{displayValue}</span>;
 };
 
-export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ darkMode }) => {
+export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ darkMode }) => {
   const lenis = useLenis();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -224,7 +224,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
         className="fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex items-center group"
-        id="portfolio-floating-tab"
+        id="projects-floating-tab"
       >
         <div className="relative flex items-center">
           {/* Glow Effect */}
@@ -236,7 +236,7 @@ export const FloatingSidePortfolio: React.FC<FloatingSidePortfolioProps> = ({ da
               <span className="text-white font-black text-[10px] tracking-tighter">PC</span>
             </div>
             <span className="[writing-mode:vertical-lr] rotate-180 text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap">
-              View Portfolio
+              View Projects
             </span>
             <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse mt-2" />
           </div>
