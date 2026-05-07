@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Linkedin, Github, Send, ChevronDown } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, ChevronDown, CheckCircle2 } from 'lucide-react';
 
 interface ContactProps {
   darkMode: boolean;
@@ -12,6 +12,25 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [focusedOptionIndex, setFocusedOptionIndex] = useState(-1);
+
+  // Refs for focusing invalid fields
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const projectTypeRef = useRef<HTMLButtonElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const projectTypeOptions = [
     "Test Automation",
@@ -39,34 +58,42 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
     e.preventDefault();
     let newErrors = { name: '', email: '', projectType: '', message: '' };
     let isValid = true;
+    let firstErrorField: 'name' | 'email' | 'projectType' | 'message' | null = null;
 
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'name';
     } else if (formData.name.trim().length < 2) {
       newErrors.name = 'Name must be at least 2 characters.';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'name';
     }
 
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'email';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'email';
     }
 
     if (!formData.projectType.trim()) {
       newErrors.projectType = 'Project type is required';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'projectType';
     }
 
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'message';
     } else if (formData.message.trim().length < 10) {
       newErrors.message = 'Message must be at least 10 characters.';
       isValid = false;
+      if (!firstErrorField) firstErrorField = 'message';
     }
 
     setErrors(newErrors);
@@ -79,10 +106,60 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
         setSubmitSuccess(true);
         setFormData({ name: '', email: '', projectType: '', message: '' });
         
-        // Reset success message after 3 seconds
-        setTimeout(() => setSubmitSuccess(false), 3000);
-      }, 1000);
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      }, 1500);
+    } else {
+      // Focus the first invalid field
+      if (firstErrorField === 'name') nameRef.current?.focus();
+      else if (firstErrorField === 'email') emailRef.current?.focus();
+      else if (firstErrorField === 'projectType') projectTypeRef.current?.focus();
+      else if (firstErrorField === 'message') messageRef.current?.focus();
     }
+  };
+
+  const handleDropdownKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (isDropdownOpen && focusedOptionIndex !== -1) {
+        selectOption(projectTypeOptions[focusedOptionIndex]);
+      } else {
+        setIsDropdownOpen(true);
+        setFocusedOptionIndex(0);
+      }
+    } else if (e.key === 'Escape') {
+      setIsDropdownOpen(false);
+      projectTypeRef.current?.focus();
+    } else if (isDropdownOpen) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setFocusedOptionIndex(prev => (prev < projectTypeOptions.length - 1 ? prev + 1 : prev));
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setFocusedOptionIndex(prev => (prev > 0 ? prev - 1 : prev));
+      } else if (e.key === 'Tab') {
+        setIsDropdownOpen(false);
+      }
+    } else if (e.key === 'ArrowDown' && !isDropdownOpen) {
+      e.preventDefault();
+      setIsDropdownOpen(true);
+      setFocusedOptionIndex(0);
+    }
+  };
+
+  useEffect(() => {
+    if (isDropdownOpen && focusedOptionIndex !== -1) {
+      // Logic to sync selection if needed or just handle via keyboard selection
+    }
+  }, [focusedOptionIndex, isDropdownOpen]);
+
+  const selectOption = (option: string) => {
+    setFormData(prev => ({ ...prev, projectType: option }));
+    if (errors.projectType) {
+      setErrors(prev => ({ ...prev, projectType: '' }));
+    }
+    setIsDropdownOpen(false);
+    projectTypeRef.current?.focus();
   };
 
   const engagementModels = [
@@ -181,126 +258,172 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 <div>
                   <label htmlFor="name" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Name <span className="text-red-500">*</span></label>
                   <input
+                    ref={nameRef}
                     type="text"
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all ${
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all ${
                       errors.name 
-                        ? 'border-red-500 focus:ring-red-500/50' 
-                        : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
-                    } ${darkMode ? 'bg-gray-900 text-white placeholder-gray-600' : 'bg-gray-50 text-gray-900 placeholder-gray-400'}`}
+                        ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
+                        : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
+                    } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
                   />
-                  {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                  {errors.name && (
+                    <p id="name-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Email <span className="text-red-500">*</span></label>
                   <input
+                    ref={emailRef}
                     type="email"
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="john@example.com"
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all ${
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all ${
                       errors.email 
-                        ? 'border-red-500 focus:ring-red-500/50' 
-                        : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
-                    } ${darkMode ? 'bg-gray-900 text-white placeholder-gray-600' : 'bg-gray-50 text-gray-900 placeholder-gray-400'}`}
+                        ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
+                        : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
+                    } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
                   />
-                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                  {errors.email && (
+                    <p id="email-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <label htmlFor="projectType" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Type <span className="text-red-500">*</span></label>
-                  <div className="relative">
-                    <div
+                  <label id="projectType-label" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Type <span className="text-red-500">*</span></label>
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      type="button"
+                      ref={projectTypeRef}
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className={`w-full px-4 py-3 rounded-xl border outline-none transition-all cursor-pointer flex items-center justify-between ${
+                      onKeyDown={handleDropdownKeyDown}
+                      aria-haspopup="listbox"
+                      aria-expanded={isDropdownOpen}
+                      aria-labelledby="projectType-label"
+                      aria-invalid={!!errors.projectType}
+                      aria-describedby={errors.projectType ? "projectType-error" : undefined}
+                      className={`w-full px-4 py-3 rounded-xl border outline-none transition-all flex items-center justify-between focus:ring-4 ${
                         errors.projectType 
-                          ? 'border-red-500 ring-2 ring-red-500/50' 
+                          ? 'border-red-500 ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
                           : isDropdownOpen 
-                            ? `ring-2 ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
-                            : `${darkMode ? 'border-gray-700' : 'border-gray-200'} hover:border-blue-500/50`
+                            ? `ring-blue-500/20 border-blue-500`
+                            : `focus:ring-blue-500/20 focus:border-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'} hover:border-blue-500/50 shadow-sm`
                       } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}
                     >
                       <span className={formData.projectType === '' ? (darkMode ? 'text-gray-600' : 'text-gray-400') : ''}>
                         {formData.projectType || 'Select a project type'}
                       </span>
                       <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''} ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
-                    </div>
+                    </button>
 
                     {/* Custom Dropdown Options */}
                     <AnimatePresence>
                       {isDropdownOpen && (
-                        <>
-                          <div className="fixed inset-0 z-40" onClick={() => setIsDropdownOpen(false)}></div>
-                          <motion.div
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
-                            data-lenis-prevent="true"
-                            className={`absolute w-full mt-2 rounded-xl border shadow-xl z-50 max-h-60 overflow-y-auto custom-scrollbar overscroll-contain ${
-                              darkMode ? 'bg-gray-800 border-gray-700 shadow-black/50' : 'bg-white border-gray-100 shadow-gray-200/50'
-                            }`}
-                          >
-                            <ul className="py-2">
-                              {projectTypeOptions.map((option) => (
-                                <li
-                                  key={option}
-                                  onClick={() => {
-                                    setFormData(prev => ({ ...prev, projectType: option }));
-                                    if (errors.projectType) {
-                                      setErrors(prev => ({ ...prev, projectType: '' }));
-                                    }
-                                    setIsDropdownOpen(false);
-                                  }}
-                                  className={`px-4 py-3 cursor-pointer transition-colors ${
-                                    formData.projectType === option
-                                      ? (darkMode ? 'bg-blue-900/40 text-blue-400 font-medium' : 'bg-blue-50 text-blue-700 font-medium')
-                                      : (darkMode ? 'text-gray-300 hover:bg-gray-700/50' : 'text-gray-700 hover:bg-gray-50')
-                                  }`}
-                                >
-                                  {option}
-                                </li>
-                              ))}
-                            </ul>
-                          </motion.div>
-                        </>
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          data-lenis-prevent="true"
+                          className={`absolute w-full mt-2 rounded-xl border shadow-2xl z-50 max-h-60 overflow-y-auto custom-scrollbar overscroll-contain ${
+                            darkMode ? 'bg-gray-800 border-gray-700 shadow-black/50' : 'bg-white border-gray-100 shadow-gray-200/50'
+                          }`}
+                        >
+                          <ul role="listbox" aria-labelledby="projectType-label" className="py-2 focus:outline-none">
+                            {projectTypeOptions.map((option, index) => (
+                              <li
+                                key={option}
+                                role="option"
+                                aria-selected={formData.projectType === option}
+                                onClick={() => selectOption(option)}
+                                onMouseEnter={() => setFocusedOptionIndex(index)}
+                                className={`px-4 py-3 cursor-pointer transition-colors flex items-center justify-between ${
+                                  index === focusedOptionIndex 
+                                    ? (darkMode ? 'bg-gray-700 text-blue-400' : 'bg-gray-50 text-blue-600')
+                                    : ''
+                                } ${
+                                  formData.projectType === option
+                                    ? (darkMode ? 'bg-blue-900/40 text-blue-400 font-bold' : 'bg-blue-50 text-blue-700 font-bold')
+                                    : (darkMode ? 'text-gray-300' : 'text-gray-700')
+                                }`}
+                              >
+                                <span>{option}</span>
+                                {formData.projectType === option && <CheckCircle2 size={16} />}
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
-                  {errors.projectType && <p className="mt-1 text-xs text-red-500">{errors.projectType}</p>}
+                  {errors.projectType && (
+                    <p id="projectType-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
+                      {errors.projectType}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="message" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Details <span className="text-red-500">*</span></label>
                   <textarea
+                    ref={messageRef}
                     id="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
                     data-lenis-prevent="true"
                     placeholder="Tell me about your project, timeline, and requirements..."
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-2 outline-none transition-all resize-none custom-scrollbar overscroll-contain ${
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all resize-none custom-scrollbar overscroll-contain ${
                       errors.message 
-                        ? 'border-red-500 focus:ring-red-500/50' 
-                        : `focus:ring-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'}`
-                    } ${darkMode ? 'bg-gray-900 text-white placeholder-gray-600' : 'bg-gray-50 text-gray-900 placeholder-gray-400'}`}
+                        ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
+                        : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
+                    } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
                   ></textarea>
-                  {errors.message && <p className="mt-1 text-xs text-red-500">{errors.message}</p>}
+                  {errors.message && (
+                    <p id="message-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
+                      {errors.message}
+                    </p>
+                  )}
                 </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 rounded-xl text-white font-bold transition-all flex justify-center items-center gap-2 shadow-lg ${
+                  className={`w-full py-4 rounded-xl text-white font-bold transition-all flex justify-center items-center gap-2 shadow-lg focus:ring-4 focus:outline-none ${
                     submitSuccess 
-                      ? 'bg-green-600 hover:bg-green-700 shadow-green-500/30' 
-                      : 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/30'
+                      ? 'bg-green-600 hover:bg-green-700 shadow-green-500/30 focus:ring-green-500/20' 
+                      : 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/30 focus:ring-blue-500/20'
                   } ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
                 >
-                  <Send size={20} className={isSubmitting ? "animate-pulse" : ""} />
+                  {isSubmitting ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                    />
+                  ) : submitSuccess ? (
+                    <CheckCircle2 size={20} />
+                  ) : (
+                    <Send size={20} />
+                  )}
                   {isSubmitting ? "Sending..." : submitSuccess ? "Message Sent!" : "Book My Consultation"}
                 </button>
+                <div aria-live="polite" className="sr-only">
+                  {submitSuccess ? "Form submitted successfully. We will get back to you soon." : ""}
+                  {errors.name || errors.email || errors.projectType || errors.message ? "The form has errors. Please fix them to continue." : ""}
+                </div>
               </div>
             </form>
           </motion.div>
