@@ -181,6 +181,13 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
       period: "2019 - 2021",
       description: "Developed and maintained cross-browser automation suites for complex fintech dashboards.",
       skills: ["Selenium", "CI/CD", "Performance"]
+    },
+    {
+      role: "QA Automation Engineer",
+      company: "DataStream Corp",
+      period: "2019 - 2021",
+      description: "Developed and maintained cross-browser automation suites for complex fintech dashboards.",
+      skills: ["Selenium", "CI/CD", "Performance"]
     }
   ];
 
