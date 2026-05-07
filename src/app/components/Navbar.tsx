@@ -101,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                 }`}
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={22} /> : <Moon size={22} />}
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
             </button>
             <a
               href="#contact"
