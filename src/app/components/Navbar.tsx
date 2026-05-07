@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
           : (darkMode ? 'bg-slate-900/40 border-slate-800/30 shadow-lg' : 'bg-white/40 border-white/50 shadow-sm')
           }`}
       >
-        <div className="flex justify-between items-center h-12">
+        <div className="flex items-center h-12">
           {/* Left: Logo & Name */}
           <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
@@ -73,8 +73,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             </span>
           </a>
 
-          {/* Center: Navigation Links (Desktop) */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Right-aligned content: Links and Actions (Desktop) */}
+          <div className="hidden md:flex items-center space-x-1 ml-auto">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -93,8 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             })}
           </div>
 
-          {/* Right: Actions (Desktop) */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3 ml-4">
             <div className={`w-px h-5 mr-1 ${darkMode ? 'bg-slate-600' : 'bg-gray-400'}`}></div>
             <button
               onClick={toggleDarkMode}
@@ -102,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                 }`}
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+              {darkMode ? <Sun size={22} /> : <Moon size={22} />}
             </button>
             <a
               href="#contact"
@@ -113,8 +112,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             </a>
           </div>
 
-          {/* Mobile Actions */}
-          <div className="md:hidden flex items-center gap-2">
+          {/* Mobile Actions - always push to right */}
+          <div className="md:hidden flex items-center gap-2 ml-auto">
             <button
               onClick={toggleDarkMode}
               className={`p-2 rounded-full transition-colors ${darkMode ? 'text-slate-300 hover:bg-slate-800/80' : 'text-gray-600 hover:bg-gray-100/80'}`}
