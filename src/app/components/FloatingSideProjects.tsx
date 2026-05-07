@@ -41,7 +41,8 @@ import {
   Phone,
   Layout,
   Award,
-  TestTube
+  TestTube,
+  Rocket
 } from 'lucide-react';
 
 interface FloatingSideProjectsProps {
@@ -232,8 +233,8 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
           
           {/* Tab Pill */}
           <div className="relative bg-gradient-to-b from-blue-600 via-indigo-600 to-violet-700 text-white px-3 py-10 rounded-l-3xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] flex flex-col items-center gap-4 border-l border-t border-b border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)]">
-            <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-              <span className="text-white font-black text-[10px] tracking-tighter">PC</span>
+            <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+              <Rocket size={18} className="text-white -rotate-12" />
             </div>
             <span className="[writing-mode:vertical-lr] rotate-180 text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap">
               View Projects
@@ -277,7 +278,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
               <div className="sticky top-0 z-50 flex items-center justify-between p-6 md:p-8 backdrop-blur-xl bg-transparent">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <span className="text-white font-bold text-sm tracking-wide">PC</span>
+                    <Rocket size={20} className="text-white -rotate-12" />
                   </div>
                   <div>
                     <h2 className="text-xl font-bold tracking-tight">Parth Chauhan</h2>
