@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   };
 
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-5xl z-50 px-4 transition-all duration-500">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-6xl z-50 px-4 transition-all duration-500">
       <nav
         className={`rounded-full border backdrop-blur-xl transition-all duration-300 px-4 py-2.5 ${scrolled
           ? (darkMode ? 'bg-slate-900/80 border-slate-700/50 shadow-[0_8px_30px_rgba(0,0,0,0.3)] shadow-blue-500/10' : 'bg-white/80 border-gray-200/50 shadow-xl shadow-gray-200/50')
