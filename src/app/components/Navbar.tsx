@@ -58,8 +58,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
     <div className="fixed top-4 left-1/2 -translate-x-1/2 w-full max-w-6xl z-50 px-4 transition-all duration-500">
       <nav
         className={`rounded-full border backdrop-blur-xl transition-all duration-300 px-4 py-2.5 ${scrolled
-          ? (darkMode ? 'bg-slate-900/80 border-slate-700/50 shadow-[0_8px_30px_rgba(0,0,0,0.3)] shadow-blue-500/10' : 'bg-white/80 border-gray-200/50 shadow-xl shadow-gray-200/50')
-          : (darkMode ? 'bg-slate-900/40 border-slate-800/30 shadow-lg' : 'bg-white/40 border-white/50 shadow-sm')
+          ? (darkMode ? 'bg-slate-800/95 border-slate-600 shadow-[0_8px_30px_rgba(0,0,0,0.5)] shadow-blue-500/20' : 'bg-white/80 border-gray-200/50 shadow-xl shadow-gray-00/50')
+          : (darkMode ? 'bg-slate-800/70 border-slate-700/80 shadow-lg' : 'bg-white/40 border-white/50 shadow-sm')
           }`}
       >
         <div className="flex items-center h-12">
@@ -83,8 +83,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`relative px-5 py-2 text-sm font-semibold rounded-full transition-all duration-300 ${isActive
-                    ? (darkMode ? 'text-white bg-slate-800/80 shadow-inner' : 'text-blue-700 bg-blue-50/80 shadow-sm')
-                    : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/50')
+                    ? (darkMode ? 'text-white bg-slate-700/80 shadow-md shadow-gray-900/60' : 'text-blue-700 bg-blue-50/80 shadow-md shadow-gray-400/50')
+                    : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/80 hover:shadow-sm hover:shadow-gray-900/40' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/80 hover:shadow-sm hover:shadow-gray-400/40')
                     }`}
                 >
                   {link.name}
@@ -150,8 +150,8 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
                     className={`block px-4 py-3.5 rounded-2xl text-base font-semibold transition-all ${isActive
-                      ? (darkMode ? 'text-white bg-slate-800/80' : 'text-blue-700 bg-blue-50')
-                      : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/50' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50')
+                      ? (darkMode ? 'text-white bg-slate-700/80 shadow-md shadow-gray-900/60' : 'text-blue-700 bg-blue-50 shadow-md shadow-gray-400/50')
+                      : (darkMode ? 'text-slate-300 hover:text-white hover:bg-slate-800/80 hover:shadow-sm hover:shadow-gray-900/40' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50 hover:shadow-sm hover:shadow-gray-400/40')
                       }`}
                   >
                     {link.name}
