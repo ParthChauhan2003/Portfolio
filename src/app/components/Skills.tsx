@@ -44,7 +44,7 @@ const COLORS = ['#ea4335', '#fbbc04', '#34a853', '#1a73e8'];
 
 export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
   return (
-    <section id="skills" className={`py-24 ${darkMode ? 'bg-[#202124]' : 'bg-[#F8F9FA]'}`}>
+    <section id="skills" className={`py-24 ${darkMode ? 'bg-gray-800/50' : 'bg-[#F8F9FA]'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
