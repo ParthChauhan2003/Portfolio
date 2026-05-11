@@ -112,9 +112,10 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ y: -10, scale: 1.02 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className={`p-8 rounded-3xl border ${darkMode ? 'bg-red-900/10 border-red-500/20' : 'bg-red-50/50 border-red-100'}`}
+            transition={{ duration: 0.4 }}
+            className={`p-8 rounded-3xl border transition-shadow duration-300 hover:shadow-2xl ${darkMode ? 'bg-red-500/15 border-red-500/40 hover:shadow-red-500/20' : 'bg-red-50 border-red-200 hover:shadow-red-200'}`}
           >
             <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               <XCircle className="text-red-500" /> Common QA Challenges I Eliminate
@@ -135,9 +136,10 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ y: -10, scale: 1.02 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className={`p-8 rounded-3xl border ${darkMode ? 'bg-green-900/10 border-green-500/20' : 'bg-green-50/50 border-green-100'}`}
+            transition={{ duration: 0.4 }}
+            className={`p-8 rounded-3xl border transition-shadow duration-300 hover:shadow-2xl ${darkMode ? 'bg-green-500/15 border-green-500/40 hover:shadow-green-500/20' : 'bg-green-50 border-green-200 hover:shadow-green-200'}`}
           >
             <h3 className={`text-2xl font-bold mb-8 flex items-center gap-3 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               <CheckCircle className="text-green-500" /> Quality That Impacts Growth
