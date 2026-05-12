@@ -105,7 +105,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
         setFormData({ name: '', email: '', projectType: '', message: '' });
-        
+
         // Reset success message after 5 seconds
         setTimeout(() => setSubmitSuccess(false), 5000);
       }, 1500);
@@ -231,7 +231,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>Email</p>
-                  <a href="mailto:hello@parthchauhan.com" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>hello@parthchauhan.com</a>
+                  <a href="mailto:Parthc004@gmail.com" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>Parthc004@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -240,7 +240,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>LinkedIn</p>
-                  <a href="#" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>in/parthchauhan</a>
+                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>in/parthchauhan</a>
                 </div>
               </div>
             </div>
@@ -266,11 +266,10 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     placeholder="John Doe"
                     aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? "name-error" : undefined}
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all ${
-                      errors.name 
-                        ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
-                        : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
-                    } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all ${errors.name
+                      ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]'
+                      : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
+                      } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
                   />
                   {errors.name && (
                     <p id="name-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
@@ -289,11 +288,10 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     placeholder="john@example.com"
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all ${
-                      errors.email 
-                        ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
-                        : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
-                    } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all ${errors.email
+                      ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]'
+                      : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
+                      } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
                   />
                   {errors.email && (
                     <p id="email-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
@@ -314,13 +312,12 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                       aria-labelledby="projectType-label"
                       aria-invalid={!!errors.projectType}
                       aria-describedby={errors.projectType ? "projectType-error" : undefined}
-                      className={`w-full px-4 py-3 rounded-xl border outline-none transition-all flex items-center justify-between focus:ring-4 ${
-                        errors.projectType 
-                          ? 'border-red-500 ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
-                          : isDropdownOpen 
-                            ? `ring-blue-500/20 border-blue-500`
-                            : `focus:ring-blue-500/20 focus:border-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'} hover:border-blue-500/50 shadow-sm`
-                      } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}
+                      className={`w-full px-4 py-3 rounded-xl border outline-none transition-all flex items-center justify-between focus:ring-4 ${errors.projectType
+                        ? 'border-red-500 ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]'
+                        : isDropdownOpen
+                          ? `ring-blue-500/20 border-blue-500`
+                          : `focus:ring-blue-500/20 focus:border-blue-500 ${darkMode ? 'border-gray-700' : 'border-gray-200'} hover:border-blue-500/50 shadow-sm`
+                        } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}
                     >
                       <span className={formData.projectType === '' ? (darkMode ? 'text-gray-600' : 'text-gray-400') : ''}>
                         {formData.projectType || 'Select a project type'}
@@ -337,9 +334,8 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.2 }}
                           data-lenis-prevent="true"
-                          className={`absolute w-full mt-2 rounded-xl border shadow-2xl z-50 max-h-60 overflow-y-auto custom-scrollbar overscroll-contain ${
-                            darkMode ? 'bg-gray-800 border-gray-700 shadow-black/50' : 'bg-white border-gray-100 shadow-gray-200/50'
-                          }`}
+                          className={`absolute w-full mt-2 rounded-xl border shadow-2xl z-50 max-h-60 overflow-y-auto custom-scrollbar overscroll-contain ${darkMode ? 'bg-gray-800 border-gray-700 shadow-black/50' : 'bg-white border-gray-100 shadow-gray-200/50'
+                            }`}
                         >
                           <ul role="listbox" aria-labelledby="projectType-label" className="py-2 focus:outline-none">
                             {projectTypeOptions.map((option, index) => (
@@ -349,15 +345,13 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                                 aria-selected={formData.projectType === option}
                                 onClick={() => selectOption(option)}
                                 onMouseEnter={() => setFocusedOptionIndex(index)}
-                                className={`px-4 py-3 cursor-pointer transition-colors flex items-center justify-between ${
-                                  index === focusedOptionIndex 
-                                    ? (darkMode ? 'bg-gray-700 text-blue-400' : 'bg-gray-50 text-blue-600')
-                                    : ''
-                                } ${
-                                  formData.projectType === option
+                                className={`px-4 py-3 cursor-pointer transition-colors flex items-center justify-between ${index === focusedOptionIndex
+                                  ? (darkMode ? 'bg-gray-700 text-blue-400' : 'bg-gray-50 text-blue-600')
+                                  : ''
+                                  } ${formData.projectType === option
                                     ? (darkMode ? 'bg-blue-900/40 text-blue-400 font-bold' : 'bg-blue-50 text-blue-700 font-bold')
                                     : (darkMode ? 'text-gray-300' : 'text-gray-700')
-                                }`}
+                                  }`}
                               >
                                 <span>{option}</span>
                                 {formData.projectType === option && <CheckCircle2 size={16} />}
@@ -386,11 +380,10 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                     placeholder="Tell me about your project, timeline, and requirements..."
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? "message-error" : undefined}
-                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all resize-none custom-scrollbar overscroll-contain ${
-                      errors.message 
-                        ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]' 
-                        : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
-                    } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
+                    className={`w-full px-4 py-3 rounded-xl border focus:ring-4 outline-none transition-all resize-none custom-scrollbar overscroll-contain ${errors.message
+                      ? 'border-red-500 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.1)]'
+                      : `focus:ring-blue-500/20 focus:border-blue-500 shadow-sm ${darkMode ? 'border-gray-700 bg-gray-900 text-white' : 'border-gray-200 bg-gray-50 text-gray-900'}`
+                      } ${darkMode ? 'placeholder-gray-600' : 'placeholder-gray-400'}`}
                   ></textarea>
                   {errors.message && (
                     <p id="message-error" className="mt-1.5 text-xs text-red-500 flex items-center gap-1 animate-in fade-in slide-in-from-top-1">
@@ -401,11 +394,10 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 rounded-xl text-white font-bold transition-all flex justify-center items-center gap-2 shadow-lg focus:ring-4 focus:outline-none ${
-                    submitSuccess 
-                      ? 'bg-green-600 hover:bg-green-700 shadow-green-500/30 focus:ring-green-500/20' 
-                      : 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/30 focus:ring-blue-500/20'
-                  } ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
+                  className={`w-full py-4 rounded-xl text-white font-bold transition-all flex justify-center items-center gap-2 shadow-lg focus:ring-4 focus:outline-none ${submitSuccess
+                    ? 'bg-green-600 hover:bg-green-700 shadow-green-500/30 focus:ring-green-500/20'
+                    : 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/30 focus:ring-blue-500/20'
+                    } ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
                 >
                   {isSubmitting ? (
                     <motion.div
