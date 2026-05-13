@@ -240,7 +240,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>LinkedIn</p>
-                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>in/parthchauhan</a>
+                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>in/parthchauhan</a>
                 </div>
               </div>
             </div>
