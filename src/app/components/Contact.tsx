@@ -100,15 +100,28 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
 
     if (isValid) {
       setIsSubmitting(true);
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitSuccess(true);
-        setFormData({ name: '', email: '', projectType: '', message: '' });
-
-        // Reset success message after 5 seconds
-        setTimeout(() => setSubmitSuccess(false), 5000);
-      }, 1500);
+      
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+        .then(response => response.json())
+        .then(data => {
+          setIsSubmitting(false);
+          if (data.success) {
+            setSubmitSuccess(true);
+            setFormData({ name: '', email: '', projectType: '', message: '' });
+            setTimeout(() => setSubmitSuccess(false), 5000);
+          } else {
+            alert('Failed to send message: ' + data.message);
+          }
+        })
+        .catch(error => {
+          setIsSubmitting(false);
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        });
     } else {
       // Focus the first invalid field
       if (firstErrorField === 'name') nameRef.current?.focus();
