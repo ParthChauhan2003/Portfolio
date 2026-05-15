@@ -105,7 +105,9 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
                   <XAxis dataKey="name" stroke={darkMode ? '#9ca3af' : '#6b7280'} fontSize={12} axisLine={false} tickLine={false} />
                   <YAxis stroke={darkMode ? '#9ca3af' : '#6b7280'} fontSize={12} axisLine={false} tickLine={false} />
                   <Tooltip
-                    contentStyle={{ backgroundColor: darkMode ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', color: darkMode ? '#fff' : '#000', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                    contentStyle={{ backgroundColor: darkMode ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                    itemStyle={{ color: darkMode ? '#fff' : '#000' }}
+                    labelStyle={{ color: darkMode ? '#fff' : '#000' }}
                     cursor={{fill: darkMode ? '#374151' : '#f3f4f6'}}
                   />
                   <Bar dataKey="coverage" fill="#1A73E8" radius={[4, 4, 0, 0]} barSize={40} />
@@ -143,7 +145,11 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                       ))}
                     </Pie>
-                    <Tooltip contentStyle={{ backgroundColor: darkMode ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }} />
+                    <Tooltip 
+                      contentStyle={{ backgroundColor: darkMode ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                      itemStyle={{ color: darkMode ? '#fff' : '#000' }}
+                      labelStyle={{ color: darkMode ? '#fff' : '#000' }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
