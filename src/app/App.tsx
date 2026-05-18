@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 import { ReactLenis } from 'lenis/react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Navbar } from './components/Navbar';
@@ -27,11 +28,42 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+  const toggleDarkMode = (event?: React.MouseEvent<HTMLButtonElement>) => {
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const doc = document as any;
+
+    if (!event || !doc.startViewTransition || isReducedMotion) {
+      setDarkMode(!darkMode);
+      return;
+    }
+
+    const x = event.clientX;
+    const y = event.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    document.documentElement.style.setProperty('--transition-x', `${x}px`);
+    document.documentElement.style.setProperty('--transition-y', `${y}px`);
+    document.documentElement.style.setProperty('--transition-r', `${endRadius}px`);
+
+    document.documentElement.classList.add('view-transitioning');
+
+    const transition = doc.startViewTransition(() => {
+      flushSync(() => {
+        setDarkMode(!darkMode);
+      });
+    });
+
+    transition.finished.then(() => {
+      document.documentElement.classList.remove('view-transitioning');
+    });
+  };
 
   return (
     <ReactLenis root>
-      <div className={`min-h-screen font-sans transition-colors duration-300 ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-[#F8F9FA] text-[#202124]'}`}>
+      <div className={`min-h-screen font-sans theme-transition-base ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-[#F8F9FA] text-[#202124]'}`}>
       <AnimatePresence>
         {loading && (
           <motion.div

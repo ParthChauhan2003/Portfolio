@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
   darkMode: boolean;
-  toggleDarkMode: () => void;
+  toggleDarkMode: (event?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
@@ -95,14 +95,40 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
 
           <div className="hidden md:flex items-center gap-3 ml-4">
             <div className={`w-px h-5 mr-1 ${darkMode ? 'bg-slate-600' : 'bg-gray-400'}`}></div>
-            <button
+            <motion.button
               onClick={toggleDarkMode}
-              className={`p-2.5 rounded-full transition-all duration-300 hover:scale-110 ${darkMode ? 'text-slate-300 hover:text-yellow-400 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 hover:bg-gray-100/80'
-                }`}
+              whileHover="hover"
+              whileTap="tap"
+              className={`relative p-2.5 rounded-full transition-colors duration-300 ${
+                darkMode ? 'text-slate-300 hover:text-yellow-400 bg-slate-800/40 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 bg-gray-100/40 hover:bg-gray-100/80'
+              }`}
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+              {/* Glow Pulse Element */}
+              <motion.span
+                variants={{
+                  hover: { scale: 1.2, opacity: 0.15 },
+                  tap: { scale: 1.4, opacity: 0.25 }
+                }}
+                initial={{ scale: 1, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`absolute inset-0 rounded-full blur-md -z-10 ${
+                  darkMode ? 'bg-yellow-400 shadow-[0_0_12px_rgba(250,204,21,0.5)]' : 'bg-blue-600 shadow-[0_0_12px_rgba(37,99,235,0.5)]'
+                }`}
+              />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={darkMode ? 'dark' : 'light'}
+                  initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex items-center justify-center"
+                >
+                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
@@ -114,12 +140,40 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
 
           {/* Mobile Actions - always push to right */}
           <div className="md:hidden flex items-center gap-2 ml-auto">
-            <button
+            <motion.button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition-colors ${darkMode ? 'text-slate-300 hover:text-yellow-400 hover:bg-slate-800/80' : 'text-gray-600 hover:bg-gray-100/80'}`}
+              whileHover="hover"
+              whileTap="tap"
+              className={`relative p-2 rounded-full transition-colors duration-300 ${
+                darkMode ? 'text-slate-300 hover:text-yellow-400 bg-slate-800/40 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 bg-gray-100/40 hover:bg-gray-100/80'
+              }`}
+              aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+              {/* Glow Pulse Element */}
+              <motion.span
+                variants={{
+                  hover: { scale: 1.2, opacity: 0.15 },
+                  tap: { scale: 1.4, opacity: 0.25 }
+                }}
+                initial={{ scale: 1, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`absolute inset-0 rounded-full blur-md -z-10 ${
+                  darkMode ? 'bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)]' : 'bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.5)]'
+                }`}
+              />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={darkMode ? 'dark' : 'light'}
+                  initial={{ opacity: 0, scale: 0.5, rotate: -45 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.5, rotate: 45 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex items-center justify-center"
+                >
+                  {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-full transition-colors ${darkMode ? 'text-slate-300 hover:bg-slate-800/80' : 'text-gray-600 hover:bg-gray-100/80'}`}
