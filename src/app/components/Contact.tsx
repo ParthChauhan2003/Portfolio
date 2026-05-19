@@ -237,14 +237,14 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               </ul>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-8">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-8">
               <div className="flex items-center gap-4">
                 <div className={`w-12 h-12 rounded-full flex items-center justify-center ${darkMode ? 'bg-gray-800 text-blue-400' : 'bg-blue-50 text-blue-600'}`}>
                   <Mail size={20} />
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>Email</p>
-                  <a href="mailto:Parthc004@gmail.com" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>Parthc004@gmail.com</a>
+                  <a href="mailto:Parthc004@gmail.com" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600 transition-colors duration-200`}>Parthc004@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -253,7 +253,16 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>LinkedIn</p>
-                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600`}>in/parthchauhan</a>
+                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600 transition-colors duration-200`}>in/parthchauhan</a>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className={`w-12 h-12 rounded-full flex items-center justify-center ${darkMode ? 'bg-gray-800 text-blue-400' : 'bg-blue-50 text-blue-600'}`}>
+                  <Github size={20} />
+                </div>
+                <div>
+                  <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>GitHub</p>
+                  <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white' : 'text-gray-900'} hover:text-blue-600 transition-colors duration-200`}>github/yourprofile</a>
                 </div>
               </div>
             </div>
