@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 Enterprise-Ready Software Quality
               </motion.span>
               <p className={`text-sm md:text-base font-medium tracking-wide uppercase ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-                Quality Assurance · Test Automation · Intelligent Testing Strategy
+                Quality Assurance · Test Automation · Ai-Powered Testing Strategy
               </p>
               <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight ${darkMode ? 'text-white' : 'text-[#202124]'}`}>
                 Deliver Software <br />
