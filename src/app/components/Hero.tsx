@@ -8,7 +8,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   return (
-    <section id="hero" className={`pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden ${darkMode ? 'bg-gray-900' : 'bg-[#F8F9FA]'}`}>
+    <section id="hero" className={`pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden overflow-x-clip ${darkMode ? 'bg-gray-900' : 'bg-[#F8F9FA]'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -128,7 +128,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   opacity: { delay: 0.8, duration: 0.5 },
                   y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
                 }}
-                className={`absolute top-12 -right-6 md:-right-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
+                className={`absolute top-12 right-2 md:-right-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 max-w-[calc(100vw-2rem)] ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
               >
                 <div className="bg-green-500/10 text-green-500 p-2.5 rounded-full shadow-inner">
                   <CheckCircle size={22} className="drop-shadow-sm" />
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   opacity: { delay: 1, duration: 0.5 },
                   y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }
                 }}
-                className={`absolute bottom-16 -left-6 md:-left-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
+                className={`absolute bottom-16 left-2 md:-left-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 max-w-[calc(100vw-2rem)] ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
               >
                 <div className="bg-red-500/10 text-red-500 p-2.5 rounded-full shadow-inner">
                   <Bug size={22} className="drop-shadow-sm" />

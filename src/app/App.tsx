@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <ReactLenis root>
-      <div className={`min-h-screen font-sans theme-transition-base ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-[#F8F9FA] text-[#202124]'}`}>
+      <div className={`min-h-screen font-sans theme-transition-base overflow-x-hidden ${darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-[#F8F9FA] text-[#202124]'}`}>
       <AnimatePresence>
         {loading && (
           <motion.div

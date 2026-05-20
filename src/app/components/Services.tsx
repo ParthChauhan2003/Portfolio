@@ -67,7 +67,7 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
 
   return (
     <section id="services" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32 overflow-hidden">
         
         {/* Services Section */}
         <div>
