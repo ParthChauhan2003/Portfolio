@@ -274,7 +274,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form className={`p-8 rounded-3xl border shadow-xl ${darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-100'}`} onSubmit={handleSubmit}>
+            <form className={`p-8 rounded-3xl border ${darkMode ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-300'}`} onSubmit={handleSubmit}>
               <h3 className={`text-xl font-bold mb-8 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Start a Free QA Consultation</h3>
               <div className="space-y-6">
                 <div>
