@@ -68,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-500 via-indigo-500 to-violet-500 flex items-center justify-center shadow-md transition-transform duration-300 group-hover:scale-110">
               <span className="text-white  font-bold text-sm tracking-wide">PC</span>
             </div>
-            <span className={`font-bold text-lg tracking-tight hidden sm:block transition-colors ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+            <span className={`font-bold text-lg tracking-tight transition-colors ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               Parth Chauhan
             </span>
           </a>

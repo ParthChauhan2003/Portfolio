@@ -239,14 +239,14 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity rounded-full" />
           
           {/* Tab Pill */}
-          <div className="relative bg-gradient-to-b from-blue-600 via-indigo-600 to-violet-700 text-white px-3 py-10 rounded-l-3xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] flex flex-col items-center gap-4 border-l border-t border-b border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)]">
-            <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
-              <Rocket size={18} className="text-white -rotate-12" />
+          <div className="relative bg-gradient-to-b from-blue-600 via-indigo-600 to-violet-700 text-white px-1.5 py-6 md:px-2.5 md:py-8 rounded-l-2xl md:rounded-l-3xl shadow-[0_10px_30px_rgba(37,99,235,0.4)] flex flex-col items-center gap-3 border-l border-t border-b border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:shadow-[0_15px_40px_rgba(37,99,235,0.6)]">
+            <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg md:rounded-xl bg-white/20 flex items-center justify-center mb-1 md:mb-2 group-hover:scale-110 transition-transform">
+              <Rocket size={14} className="text-white -rotate-12 md:w-[18px] md:h-[18px]" />
             </div>
-            <span className="[writing-mode:vertical-lr] rotate-180 text-sm font-bold tracking-[0.2em] uppercase whitespace-nowrap">
+            <span className="[writing-mode:vertical-lr] rotate-180 text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase whitespace-nowrap">
               View Projects
             </span>
-            <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse mt-2" />
+            <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-white animate-pulse mt-1 md:mt-2" />
           </div>
         </div>
       </motion.button>
