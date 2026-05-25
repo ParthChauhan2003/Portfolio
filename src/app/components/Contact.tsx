@@ -322,7 +322,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   )}
                 </div>
                 <div>
-                  <label id="projectType-label" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Project Type <span className="text-red-500">*</span></label>
+                  <label id="projectType-label" className={`block text-xs font-bold uppercase tracking-wider mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Testing Type<span className="text-red-500">*</span></label>
                   <div className="relative" ref={dropdownRef}>
                     <button
                       type="button"
@@ -342,7 +342,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                         } ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}
                     >
                       <span className={formData.projectType === '' ? (darkMode ? 'text-gray-600' : 'text-gray-400') : ''}>
-                        {formData.projectType || 'Select a project type'}
+                        {formData.projectType || 'Select a Testing Type'}
                       </span>
                       <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''} ${darkMode ? 'text-gray-400' : 'text-gray-500'}`} />
                     </button>

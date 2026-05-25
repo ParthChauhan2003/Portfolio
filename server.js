@@ -36,17 +36,17 @@ app.post('/api/contact', async (req, res) => {
       text: `
 Name: ${name}
 Email: ${email}
-Project Type: ${projectType}
+Testing Type: ${projectType}
 
-Message:
+Project Details:
 ${message}
       `, // plain text body
       html: `
         <h3>New QA Consultation Request</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Project Type:</strong> ${projectType}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
+        <p><strong>Testing Type:</strong> ${projectType}</p>
+        <p><strong>Project Details:</strong><br/>${message}</p>
       `, // html body
     });
 
