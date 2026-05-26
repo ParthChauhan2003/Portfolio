@@ -1,3 +1,8 @@
 @import './tailwind.css';
 @import './fonts.css';
 @import './theme.css';
+
+html,
+body {
+    overflow-x: hidden !important;
+}
