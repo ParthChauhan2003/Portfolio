@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
               whileHover="hover"
               whileTap="tap"
               className={`relative p-2.5 rounded-full transition-colors duration-300 ${
-                darkMode ? 'text-slate-300 hover:text-yellow-400 bg-slate-800/40 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 bg-gray-100/40 hover:bg-gray-100/80'
+                darkMode ? 'text-slate-300 hover:text-yellow-400 active:text-yellow-400 bg-slate-800/40 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 active:text-blue-600 bg-gray-100/40 hover:bg-gray-100/80'
               }`}
               aria-label="Toggle dark mode"
             >
@@ -145,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
               whileHover="hover"
               whileTap="tap"
               className={`relative p-2 rounded-full transition-colors duration-300 ${
-                darkMode ? 'text-slate-300 hover:text-yellow-400 bg-slate-800/40 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 bg-gray-100/40 hover:bg-gray-100/80'
+                darkMode ? 'text-slate-300 hover:text-yellow-400 active:text-yellow-400 bg-slate-800/40 hover:bg-slate-800/80' : 'text-gray-600 hover:text-blue-600 active:text-blue-600 bg-gray-100/40 hover:bg-gray-100/80'
               }`}
               aria-label="Toggle dark mode"
             >
