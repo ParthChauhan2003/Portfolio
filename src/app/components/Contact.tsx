@@ -244,7 +244,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>Email</p>
-                  <a href="mailto:Parthc004@gmail.com" className={`text-sm font-medium ${darkMode ? 'text-white hover:text-blue-400 active:text-blue-300' : 'text-gray-900 hover:text-blue-600 active:text-blue-700'} transition-colors duration-200`}>Parthc004@gmail.com</a>
+                  <a href="mailto:Parthc004@gmail.com" className={`text-sm font-medium ${darkMode ? 'text-white hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'} transition-colors duration-200`}>Parthc004@gmail.com</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -253,7 +253,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>LinkedIn</p>
-                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white hover:text-blue-400 active:text-blue-300' : 'text-gray-900 hover:text-blue-600 active:text-blue-700'} transition-colors duration-200`}>in/parthchauhan</a>
+                  <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'} transition-colors duration-200`}>in/parthchauhan</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -262,7 +262,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 </div>
                 <div>
                   <p className={`text-xs font-bold uppercase tracking-wider ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>GitHub</p>
-                  <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white hover:text-blue-400 active:text-blue-300' : 'text-gray-900 hover:text-blue-600 active:text-blue-700'} transition-colors duration-200`}>github/yourprofile</a>
+                  <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className={`text-sm font-medium ${darkMode ? 'text-white hover:text-blue-400' : 'text-gray-900 hover:text-blue-600'} transition-colors duration-200`}>github/yourprofile</a>
                 </div>
               </div>
             </div>
