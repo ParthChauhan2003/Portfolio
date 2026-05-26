@@ -129,14 +129,14 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   opacity: { delay: 0.8, duration: 0.5 },
                   y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
                 }}
-                className={`absolute top-12 right-2 md:-right-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 max-w-[calc(100vw-2rem)] ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
+                className={`absolute -top-6 right-2 sm:top-12 sm:-right-6 md:-right-10 p-3 sm:p-4 rounded-xl shadow-2xl flex items-center gap-3 sm:gap-4 border z-10 max-w-[calc(100vw-2rem)] sm:max-w-none ${darkMode ? 'bg-gray-800/95 border-gray-700 backdrop-blur-md' : 'bg-white/95 border-gray-100 backdrop-blur-md'}`}
               >
-                <div className="bg-green-500/10 text-green-500 p-2.5 rounded-full shadow-inner">
-                  <CheckCircle size={22} className="drop-shadow-sm" />
+                <div className="bg-green-500/10 text-green-500 p-2 sm:p-2.5 rounded-full shadow-inner">
+                  <CheckCircle className="w-5 h-5 sm:w-[22px] sm:h-[22px] drop-shadow-sm" />
                 </div>
                 <div>
-                  <p className={`text-sm font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>All Tests Passed</p>
-                  <p className={`text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>CI/CD Pipeline Active</p>
+                  <p className={`text-xs sm:text-sm font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>All Tests Passed</p>
+                  <p className={`text-[10px] sm:text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>CI/CD Pipeline Active</p>
                 </div>
               </motion.div>
 
@@ -152,14 +152,14 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                   opacity: { delay: 1, duration: 0.5 },
                   y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }
                 }}
-                className={`absolute bottom-16 left-2 md:-left-10 p-4 rounded-xl shadow-2xl flex items-center gap-4 border z-10 max-w-[calc(100vw-2rem)] ${darkMode ? 'bg-gray-800/90 border-gray-700 backdrop-blur-md' : 'bg-white/90 border-gray-100 backdrop-blur-md'}`}
+                className={`absolute -bottom-6 left-2 sm:bottom-16 sm:-left-6 md:-left-10 p-3 sm:p-4 rounded-xl shadow-2xl flex items-center gap-3 sm:gap-4 border z-10 max-w-[calc(100vw-2rem)] sm:max-w-none ${darkMode ? 'bg-gray-800/95 border-gray-700 backdrop-blur-md' : 'bg-white/95 border-gray-100 backdrop-blur-md'}`}
               >
-                <div className="bg-red-500/10 text-red-500 p-2.5 rounded-full shadow-inner">
-                  <Bug size={22} className="drop-shadow-sm" />
+                <div className="bg-red-500/10 text-red-500 p-2 sm:p-2.5 rounded-full shadow-inner">
+                  <Bug className="w-5 h-5 sm:w-[22px] sm:h-[22px] drop-shadow-sm" />
                 </div>
                 <div>
-                  <p className={`text-sm font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>0 Critical Bugs</p>
-                  <p className={`text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Verified in Production</p>
+                  <p className={`text-xs sm:text-sm font-bold tracking-tight ${darkMode ? 'text-white' : 'text-gray-900'}`}>0 Critical Bugs</p>
+                  <p className={`text-[10px] sm:text-xs font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>Verified in Production</p>
                 </div>
               </motion.div>
             </div>
