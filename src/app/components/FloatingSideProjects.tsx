@@ -19,7 +19,6 @@ import {
   ListChecks,
   Mail,
   Linkedin,
-  Twitter,
   User,
   Briefcase,
   Code,
@@ -555,27 +554,32 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                     </div>
                   </section>
 
-                  {/* Contact CTA & Socials */}
+                   {/* Contact CTA & Socials */}
                   <section className="pb-12">
                     <div className={`p-10 rounded-[40px] text-center space-y-8 ${darkMode ? 'bg-white text-slate-900' : 'bg-slate-900 text-white'}`}>
                       <h3 className="text-3xl font-black tracking-tight">Let's build quality together.</h3>
                       <p className="opacity-70 text-lg">Ready to transform your QA process and release faster?</p>
-                      <button className={`w-full py-4 rounded-2xl font-black text-lg transition-transform active:scale-95 ${darkMode ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-blue-600 text-white shadow-xl shadow-blue-600/30'}`}>
+                      <button
+                        onClick={() => {
+                          setIsOpen(false);
+                          setTimeout(() => {
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                          }, 400);
+                        }}
+                        className={`w-full py-4 rounded-2xl font-black text-lg transition-transform active:scale-95 ${darkMode ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/30' : 'bg-blue-600 text-white shadow-xl shadow-blue-600/30'}`}
+                      >
                         Start Free Consultation
                       </button>
                       <div className="flex justify-center gap-6 pt-4">
-                        <div className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
+                        <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
                           <Linkedin size={20} />
-                        </div>
-                        <div className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
-                          <Twitter size={20} />
-                        </div>
-                        <div className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
+                        </a>
+                        <a href="mailto:Parthc004@gmail.com" className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
                           <Mail size={20} />
-                        </div>
-                        <div className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
+                        </a>
+                        <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-20 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 cursor-pointer">
                           <Github size={20} />
-                        </div>
+                        </a>
                       </div>
                     </div>
                   </section>
