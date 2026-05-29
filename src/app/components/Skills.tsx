@@ -102,7 +102,7 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={coverageData} margin={{ top: 0, right: 0, left: -20, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={darkMode ? '#374151' : '#e5e7eb'} />
-                  <XAxis dataKey="name" stroke={darkMode ? '#9ca3af' : '#6b7280'} fontSize={12} axisLine={false} tickLine={false} />
+                  <XAxis dataKey="name" stroke={darkMode ? '#9ca3af' : '#6b7280'} fontSize={12} axisLine={false} tickLine={false} interval={0} />
                   <YAxis stroke={darkMode ? '#9ca3af' : '#6b7280'} fontSize={12} axisLine={false} tickLine={false} />
                   <Tooltip
                     contentStyle={{ backgroundColor: darkMode ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
