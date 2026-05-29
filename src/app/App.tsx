@@ -15,6 +15,7 @@ import { CertsTools } from './components/CertsTools';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { FloatingSideProjects } from './components/FloatingSideProjects';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false); // Default to light mode for Google style
@@ -100,6 +101,7 @@ export default function App() {
           <Footer darkMode={darkMode} />
         </>
       )}
+      <Analytics />
     </div>
     </ReactLenis>
   );
