@@ -57,7 +57,7 @@ export const Projects: React.FC<ProjectsProps> = ({ darkMode }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`flex flex-col rounded-2xl border overflow-hidden transition-all shadow-soft hover:shadow-hover hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
+              className={`relative transform-gpu flex flex-col rounded-2xl border overflow-hidden transition-all shadow-soft hover:shadow-hover hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}
             >
               <div className="p-8 flex-1">
                 <div className="flex justify-between items-start mb-6">

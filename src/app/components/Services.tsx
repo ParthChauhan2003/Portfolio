@@ -92,7 +92,7 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className={`p-6 rounded-2xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100'}`}
+                className={`relative transform-gpu p-6 rounded-2xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100'}`}
               >
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${darkMode ? 'bg-gray-700' : 'bg-blue-50'}`}>
                   {service.icon}

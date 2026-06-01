@@ -74,7 +74,7 @@ export const Expertise: React.FC<ExpertiseProps> = ({ darkMode }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className={`p-8 rounded-3xl border transition-all hover:-translate-y-2 ${darkMode ? 'bg-gray-900 border-gray-800 hover:border-indigo-500/30' : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-100'}`}
+                className={`relative transform-gpu p-8 rounded-3xl border transition-all hover:-translate-y-2 ${darkMode ? 'bg-gray-900 border-gray-800 hover:border-indigo-500/30' : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-100'}`}
               >
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform hover:scale-110 ${darkMode ? 'bg-gray-800' : 'bg-indigo-50'}`}>
                   {item.icon}
