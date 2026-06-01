@@ -82,7 +82,7 @@ export const Workflow: React.FC<WorkflowProps> = ({ darkMode }) => {
                 scale: 1.03,
                 transition: { duration: 0.3 }
               }}
-              className={`relative transform-gpu group p-8 rounded-3xl border transition-all duration-300 ${
+              className={`group p-8 rounded-3xl border transition-all duration-300 ${
                 darkMode 
                   ? 'bg-gray-900 border-gray-800 hover:border-blue-500/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]' 
                   : 'bg-white border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100'

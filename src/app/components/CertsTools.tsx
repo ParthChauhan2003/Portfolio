@@ -61,7 +61,7 @@ export const CertsTools: React.FC<CertsToolsProps> = ({ darkMode }) => {
                 opacity: { duration: 0.5, delay: index * 0.1 },
                 y: { duration: 0.5, delay: index * 0.1 }
               }}
-              className={`transform-gpu p-8 rounded-2xl border transition-all duration-300 group cursor-default relative overflow-hidden ${
+              className={`p-8 rounded-2xl border transition-all duration-300 group cursor-default relative overflow-hidden ${
                 darkMode 
                   ? 'bg-gray-800 border-gray-700 hover:border-blue-500/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]' 
                   : 'bg-gray-50 border-gray-100 hover:border-blue-200 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)]'

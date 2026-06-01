@@ -64,7 +64,7 @@ export const About: React.FC<AboutProps> = ({ darkMode }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`relative transform-gpu p-8 rounded-2xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]' : 'bg-white border-gray-100 shadow-sm hover:shadow-lg hover:border-blue-100'}`}
+              className={`p-8 rounded-2xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)]' : 'bg-white border-gray-100 shadow-sm hover:shadow-lg hover:border-blue-100'}`}
             >
               <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 ${darkMode ? 'bg-gray-700' : 'bg-blue-50'}`}>
                 {item.icon}
