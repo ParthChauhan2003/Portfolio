@@ -77,14 +77,17 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
   // Prevent body scroll when panel is open
   useEffect(() => {
     if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
       lenis?.stop();
     } else {
-      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
       lenis?.start();
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
       lenis?.start();
     };
   }, [isOpen, lenis]);
