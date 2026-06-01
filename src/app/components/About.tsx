@@ -9,22 +9,22 @@ interface AboutProps {
 export const About: React.FC<AboutProps> = ({ darkMode }) => {
   const highlights = [
     {
-      icon: <Settings className=" relative transform-gpu w-6 h-6 text-blue-500" />,
+      icon: <Settings className="w-6 h-6 text-blue-500" />,
       title: "Strategic Automation",
       description: "Up to 70% faster execution cycles through scalable automation systems."
     },
     {
-      icon: <ShieldCheck className="relative transform-gpu w-6 h-6 text-green-500" />,
+      icon: <ShieldCheck className="w-6 h-6 text-green-500" />,
       title: "Zero Defect Leakage",
       description: "Near-zero defect leakage into production environments."
     },
     {
-      icon: <Target className="relative transform-gpu w-6 h-6 text-indigo-500" />,
+      icon: <Target className="w-6 h-6 text-indigo-500" />,
       title: "Business Alignment",
       description: "Aligning technical validation with real user expectations."
     },
     {
-      icon: <Search className="relative transform-gpu w-6 h-6 text-purple-500" />,
+      icon: <Search className="w-6 h-6 text-purple-500" />,
       title: "Proactive Growth",
       description: "Shifting testing from a reactive task to a proactive growth driver."
     }
