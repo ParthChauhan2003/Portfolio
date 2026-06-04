@@ -15,6 +15,7 @@ import { CertsTools } from './components/CertsTools';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { FloatingSideProjects } from './components/FloatingSideProjects';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 
@@ -99,6 +100,7 @@ export default function App() {
             <Contact darkMode={darkMode} />
           </main>
           <FloatingSideProjects darkMode={darkMode} />
+          <WhatsAppWidget darkMode={darkMode} />
           <Footer darkMode={darkMode} />
         </>
       )}
