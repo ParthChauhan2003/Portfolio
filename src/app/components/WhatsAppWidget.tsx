@@ -95,7 +95,7 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({ darkMode }) => {
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 bg-[#2db742] hover:bg-[#28a33b] text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:-translate-y-0.5 group focus:outline-none focus:ring-2 focus:ring-[#2db742] focus:ring-offset-2"
+                className="w-full flex items-center justify-center gap-2 bg-[#2db742] hover:bg-[#28a33b] text-white font-semibold py-3.5 px-4 rounded-xl transition-all duration-200 shadow-lg hover:-translate-y-0.5 group focus:outline-none focus:ring-2 focus:ring-[#2db742] focus:ring-offset-2"
               >
                 <WhatsAppIcon size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 Chat on WhatsApp
@@ -113,7 +113,7 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({ darkMode }) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className={`px-4 py-2.5 rounded-full shadow-lg text-sm whitespace-nowrap cursor-pointer pointer-events-auto backdrop-blur-md flex items-center transition-transform hover:scale-105 ${
+              className={`hidden sm:flex px-4 py-2.5 rounded-full shadow-lg text-sm whitespace-nowrap cursor-pointer pointer-events-auto backdrop-blur-md items-center transition-transform hover:scale-105 ${
                 darkMode 
                   ? 'bg-gray-800/95 text-gray-300 border border-gray-700/50 shadow-black/30' 
                   : 'bg-white/95 text-gray-600 border border-gray-100 shadow-gray-200/50'
@@ -128,7 +128,7 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({ darkMode }) => {
         <button
           onClick={isOpen ? handleClose : handleOpen}
           style={{ willChange: 'transform' }}
-          className={`relative flex items-center justify-center w-[60px] h-[60px] text-white rounded-full transition-all duration-300 z-10 focus:outline-none focus:ring-4 focus:ring-offset-2 bg-[#2db742] hover:bg-[#28a33b] hover:scale-105 shadow-xl shadow-green-500/30 hover:shadow-green-500/50 focus:ring-[#2db742]/50 ${darkMode ? 'focus:ring-offset-gray-900' : 'focus:ring-offset-white'}`}
+          className={`relative flex items-center justify-center w-[60px] h-[60px] text-white rounded-full transition-all duration-300 z-10 focus:outline-none focus:ring-4 focus:ring-offset-2 bg-[#2db742] hover:bg-[#28a33b] hover:scale-105 shadow-xl focus:ring-[#2db742]/50 ${darkMode ? 'focus:ring-offset-gray-900' : 'focus:ring-offset-white'}`}
           aria-label={isOpen ? 'Close Chat' : 'Open WhatsApp Chat'}
           aria-expanded={isOpen}
         >
