@@ -53,7 +53,10 @@ export const Skills: React.FC<SkillsProps> = ({ darkMode }) => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className={`text-3xl font-medium tracking-tight mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Skills & Analytics</h2>
+          <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4 ${darkMode ? 'text-blue-400 bg-blue-900/20' : 'text-blue-600 bg-blue-50'}`}>
+            Skills & Analytics
+          </span>
+          <h2 className={`text-3xl font-medium tracking-tight mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Skills & Analytics</h2>
           <div className="w-16 h-1 bg-google-blue mx-auto rounded-full mb-8"></div>
           <p className={`text-lg leading-relaxed font-light ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             A comprehensive overview of my technical expertise and QA performance metrics.
