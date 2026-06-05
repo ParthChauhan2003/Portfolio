@@ -21,6 +21,12 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   ];
 
   useEffect(() => {
+    const handleWhatsappOpen = () => setIsOpen(false);
+    window.addEventListener('whatsapp-widget-opened', handleWhatsappOpen);
+    return () => window.removeEventListener('whatsapp-widget-opened', handleWhatsappOpen);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 

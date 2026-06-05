@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 
@@ -23,15 +23,29 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({ darkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const widgetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // We keep this empty or remove the timers since text should always be visible
-  }, []);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (widgetRef.current && !widgetRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const handleOpen = () => {
     setIsOpen(true);
     setShowTooltip(false);
     setHasInteracted(true);
+    window.dispatchEvent(new Event('whatsapp-widget-opened'));
   };
 
   const handleClose = () => {
@@ -41,7 +55,7 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({ darkMode }) => {
   const waLink = "https://wa.me/919664639533?text=Hello+Parth,+I+visited+your+QA+Portfolio+and+would+like+to+discuss+a+project.";
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end">
+    <div ref={widgetRef} className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end">
       <AnimatePresence>
         {isOpen && (
           <motion.div
