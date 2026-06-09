@@ -27,7 +27,14 @@ export const WhatsAppWidget: React.FC<WhatsAppWidgetProps> = ({ darkMode }) => {
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (widgetRef.current && !widgetRef.current.contains(event.target as Node)) {
+      const target = event.target as Node;
+      
+      // Ignore clicks on the theme toggle buttons to prevent closing when switching themes
+      if (target instanceof Element && target.closest('[aria-label="Toggle dark mode"]')) {
+        return;
+      }
+
+      if (widgetRef.current && !widgetRef.current.contains(target)) {
         setIsOpen(false);
       }
     };
