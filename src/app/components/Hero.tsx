@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               </p>
               <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight ${darkMode ? 'text-white' : 'text-[#202124]'}`}>
                 Deliver Software <br />
-                <span className="text-blue-600">with Complete Confidence</span>
+                <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 bg-clip-text text-transparent">with Complete Confidence</span>
               </h1>
               <p className={`text-lg md:text-xl max-w-xl font-light leading-relaxed ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 I partner with fast-scaling startups and enterprise teams to uncover critical issues early, reduce regression effort, and ensure seamless, high-quality digital experiences at every release.
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             >
               <a
                 href="#contact"
-                className="inline-flex justify-center items-center px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all shadow-lg shadow-blue-500/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/40 active:scale-95 gap-2"
+                className="inline-flex justify-center items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-600 hover:from-blue-600 hover:via-indigo-600 hover:to-violet-700 text-white font-medium transition-all shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/40 active:scale-95 gap-2"
               >
                 Book a QA Consultation
                 <ArrowRight size={18} />

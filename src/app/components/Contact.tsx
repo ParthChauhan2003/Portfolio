@@ -418,7 +418,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                   disabled={isSubmitting}
                   className={`w-full py-4 rounded-xl text-white font-bold transition-all flex justify-center items-center gap-2 shadow-lg focus:ring-4 focus:outline-none ${submitSuccess
                     ? 'bg-green-600 hover:bg-green-700 shadow-green-500/30 focus:ring-green-500/20'
-                    : 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/30 focus:ring-blue-500/20'
+                    : 'bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-600 hover:from-blue-600 hover:via-indigo-600 hover:to-violet-700 shadow-indigo-500/30 focus:ring-indigo-500/20'
                     } ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:-translate-y-0.5 active:scale-95'}`}
                 >
                   {isSubmitting ? (
