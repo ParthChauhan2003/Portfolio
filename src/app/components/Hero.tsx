@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Download, CheckCircle, Bug } from 'lucide-react';
+import { MagneticButton } from './MagneticButton';
 
 interface HeroProps {
   darkMode: boolean;
@@ -45,19 +46,23 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               transition={{ delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4 pt-2"
             >
-              <a
-                href="#contact"
-                className="inline-flex justify-center items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-600 hover:from-blue-600 hover:via-indigo-600 hover:to-violet-700 text-white font-medium transition-all shadow-lg shadow-indigo-500/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/40 active:scale-95 gap-2"
-              >
-                Book a QA Consultation
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href="#projects"
-                className={`inline-flex justify-center items-center px-8 py-3 rounded-full border font-medium transition-all hover:-translate-y-0.5 active:scale-95 gap-2 ${darkMode ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'}`}
-              >
-                Explore My Work
-              </a>
+              <MagneticButton>
+                <a
+                  href="#contact"
+                  className="inline-flex justify-center items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-600 hover:from-blue-600 hover:via-indigo-600 hover:to-violet-700 text-white font-medium transition-all shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 gap-2"
+                >
+                  Book a QA Consultation
+                  <ArrowRight size={18} />
+                </a>
+              </MagneticButton>
+              <MagneticButton>
+                <a
+                  href="#projects"
+                  className={`inline-flex justify-center items-center px-8 py-3 rounded-full border font-medium transition-all gap-2 ${darkMode ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'}`}
+                >
+                  Explore My Work
+                </a>
+              </MagneticButton>
             </motion.div>
 
             <motion.div
