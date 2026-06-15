@@ -577,7 +577,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                         <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-blue-600 cursor-pointer">
                           <Linkedin size={20} />
                         </a>
-                        <a href="mailto:Parthc004@gmail.com" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-blue-500 cursor-pointer">
+                        <a href="mailto:Parthc004@gmail.com" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-pink-500 cursor-pointer">
                           <Mail size={20} />
                         </a>
                         <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-slate-800 dark:hover:text-white cursor-pointer">
