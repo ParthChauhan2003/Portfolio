@@ -183,7 +183,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
   ];
 
   return (
-    <section id="contact" className={`py-24 ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="contact" className={`py-24 overflow-hidden overflow-x-clip ${darkMode ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide mb-4 ${darkMode ? 'text-blue-400 bg-blue-900/20' : 'text-blue-600 bg-blue-50'}`}>
@@ -198,7 +198,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -211,10 +211,35 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-gray-900'}`}>Engagement Options</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {engagementModels.map((model, index) => (
-                  <div key={index} className={`p-4 rounded-xl border ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-100'}`}>
-                    <h4 className={`text-sm font-bold mb-1 ${darkMode ? 'text-white' : 'text-gray-900'}`}>{model.title}</h4>
-                    <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{model.desc}</p>
-                  </div>
+                  <motion.div 
+                    key={index} 
+                    whileHover={{ 
+                      y: -5,
+                      scale: 1.02,
+                      transition: { duration: 0.3, ease: "easeOut" }
+                    }}
+                    style={{ backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}
+                    className={`p-4 rounded-xl border transition-colors transition-shadow duration-300 group cursor-default relative overflow-hidden ${
+                      darkMode 
+                        ? 'bg-gray-800 border-gray-700 hover:border-blue-500/50 hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)]' 
+                        : 'bg-gray-50 border-gray-100 hover:border-blue-200 hover:shadow-[0_15px_30px_rgba(0,0,0,0.05)]'
+                    }`}
+                  >
+                    {/* Subtle background glow on hover */}
+                    <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${
+                      darkMode 
+                        ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-transparent' 
+                        : 'bg-gradient-to-br from-blue-500/5 via-transparent to-transparent'
+                    }`} />
+
+                    {/* Shine sweep effect */}
+                    <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-20" />
+                    
+                    <div className="relative z-10">
+                      <h4 className={`text-sm font-bold mb-1 transition-colors duration-300 ${darkMode ? 'text-white group-hover:text-blue-400' : 'text-gray-900 group-hover:text-blue-600'}`}>{model.title}</h4>
+                      <p className={`text-xs transition-colors duration-300 ${darkMode ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-500 group-hover:text-gray-700'}`}>{model.desc}</p>
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
