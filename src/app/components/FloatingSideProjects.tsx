@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'motion/react';
 import { animate } from 'motion';
 import { useLenis, ReactLenis } from 'lenis/react';
+import { MagneticButton } from './MagneticButton';
 import { 
   X, 
   ArrowRight, 
@@ -562,32 +563,42 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                     <div className={`p-10 rounded-[40px] text-center space-y-8 border ${darkMode ? 'bg-white/5 border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900 shadow-sm'}`}>
                       <h3 className="text-3xl font-black tracking-tight">Let's build quality together.</h3>
                       <p className="opacity-70 text-lg">Ready to transform your QA process and release faster?</p>
-                      <button
-                        onClick={() => {
-                          setIsOpen(false);
-                          setTimeout(() => {
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                          }, 400);
-                        }}
-                        className="w-full py-4 rounded-2xl font-black text-lg transition-transform active:scale-95 bg-blue-600 text-white shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-600/40"
-                      >
-                        Start Free Consultation
-                      </button>
+                      <MagneticButton className="w-full">
+                        <button
+                          onClick={() => {
+                            setIsOpen(false);
+                            setTimeout(() => {
+                              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }, 400);
+                          }}
+                          className="w-full py-4 rounded-2xl font-black text-lg transition-colors bg-blue-600 text-white shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-600/40"
+                        >
+                          Start Free Consultation
+                        </button>
+                      </MagneticButton>
                       <div className="flex justify-center gap-6 pt-4">
-                        <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-blue-600 cursor-pointer">
-                          <Linkedin size={20} />
-                        </a>
-                        <a href="mailto:Parthc004@gmail.com" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-pink-500 cursor-pointer">
-                          <Mail size={20} />
-                        </a>
-                        <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-slate-800 dark:hover:text-white cursor-pointer">
-                          <Github size={20} />
-                        </a>
-                        <a href="https://wa.me/919664639533?text=Hello+Parth,+I+visited+your+QA+Portfolio+and+would+like+to+discuss+a+project." target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-all hover:opacity-100 hover:scale-110 hover:text-[#2db742] cursor-pointer">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                          </svg>
-                        </a>
+                        <MagneticButton>
+                          <a href="https://www.linkedin.com/in/parth-chauhan-7a79131ba" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-colors hover:opacity-100 hover:text-blue-600 cursor-pointer">
+                            <Linkedin size={20} />
+                          </a>
+                        </MagneticButton>
+                        <MagneticButton>
+                          <a href="mailto:Parthc004@gmail.com" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-colors hover:opacity-100 hover:text-pink-500 cursor-pointer">
+                            <Mail size={20} />
+                          </a>
+                        </MagneticButton>
+                        <MagneticButton>
+                          <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-colors hover:opacity-100 hover:text-slate-800 dark:hover:text-white cursor-pointer">
+                            <Github size={20} />
+                          </a>
+                        </MagneticButton>
+                        <MagneticButton>
+                          <a href="https://wa.me/919664639533?text=Hello+Parth,+I+visited+your+QA+Portfolio+and+would+like+to+discuss+a+project." target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl border border-current opacity-40 flex items-center justify-center transition-colors hover:opacity-100 hover:text-[#2db742] cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                            </svg>
+                          </a>
+                        </MagneticButton>
                       </div>
                     </div>
                   </section>
