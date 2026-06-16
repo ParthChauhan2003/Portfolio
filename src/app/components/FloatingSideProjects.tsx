@@ -571,7 +571,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                             }, 400);
                           }}
-                          className="w-full py-4 rounded-2xl font-black text-lg transition-colors bg-blue-600 text-white shadow-xl shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-600/40"
+                          className="w-full py-4 rounded-2xl font-black text-lg transition-all text-white shadow-lg focus:ring-4 focus:outline-none bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-600 hover:from-blue-600 hover:via-indigo-600 hover:to-violet-700 shadow-indigo-500/30 focus:ring-indigo-500/20"
                         >
                           Start Free Consultation
                         </button>
