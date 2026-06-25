@@ -1,11 +1,87 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useMotionTemplate, useMotionValue, animate } from 'motion/react';
 import { Mail, Linkedin, Github, Send, ChevronDown, CheckCircle2, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface ContactProps {
   darkMode: boolean;
 }
+
+const WhatYouGetCard: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const rotation = useMotionValue(0);
+
+  useEffect(() => {
+    let animation: any;
+    if (isHovered) {
+      const currentRotation = rotation.get() % 360;
+      rotation.set(currentRotation);
+      animation = animate(rotation, [currentRotation, currentRotation + 360], {
+        repeat: Infinity,
+        duration: 8,
+        ease: "linear",
+      });
+    } else {
+      if (animation) {
+        animation.stop();
+      }
+    }
+    return () => {
+      if (animation) {
+        animation.stop();
+      }
+    };
+  }, [isHovered, rotation]);
+
+  const backgroundImage = useMotionTemplate`conic-gradient(from ${rotation}deg at 50% 50%, transparent 0%, #f472b6 14%, #c084fc 28%, #818cf8 42%, #38bdf8 56%, #2dd4bf 70%, #fbbf24 84%, transparent 100%)`;
+
+  return (
+    <div 
+      className="relative group w-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Glow Layer */}
+      <motion.div
+        style={{ backgroundImage }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 0.65 : 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        className="absolute -inset-[2px] rounded-[26px] blur-[25px] pointer-events-none z-0"
+      />
+
+      {/* Border Layer */}
+      <motion.div
+        style={{ backgroundImage }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.25, ease: "easeInOut" }}
+        className="absolute -inset-[2px] rounded-[26px] pointer-events-none z-0"
+      />
+
+      {/* Solid Mask */}
+      <div className={`absolute inset-0 rounded-3xl z-10 ${darkMode ? 'bg-gray-900' : 'bg-white'}`} />
+      
+      {/* Content Container */}
+      <div className={`relative p-8 rounded-3xl border z-20 transition-colors duration-[250ms] ${isHovered ? 'border-transparent' : (darkMode ? 'border-blue-500/20' : 'border-blue-100')} ${darkMode ? 'bg-blue-900/10' : 'bg-blue-50'}`}>
+        <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>📝 What You’ll Get</h3>
+        <ul className="space-y-4">
+          {[
+            "Free 20-minute consultation",
+            "Identification of QA gaps",
+            "Automation strategy suggestions",
+            "Release optimization insights"
+          ].map((item, index) => (
+            <li key={index} className="flex items-center gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+              <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
   const [formData, setFormData] = useState({ name: '', email: '', projectType: '', message: '' });
@@ -292,22 +368,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
             </div>
 
             {/* What You'll Get */}
-            <div className={`p-8 rounded-3xl border ${darkMode ? 'bg-blue-900/10 border-blue-500/20' : 'bg-blue-50 border-blue-100'}`}>
-              <h3 className={`text-xl font-bold mb-6 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>📝 What You’ll Get</h3>
-              <ul className="space-y-4">
-                {[
-                  "Free 20-minute consultation",
-                  "Identification of QA gaps",
-                  "Automation strategy suggestions",
-                  "Release optimization insights"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
-                    <span className={`text-sm font-medium ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <WhatYouGetCard darkMode={darkMode} />
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-8">
               <div className="flex items-center gap-4">
