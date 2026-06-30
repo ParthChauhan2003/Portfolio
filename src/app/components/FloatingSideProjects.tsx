@@ -334,9 +334,13 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                         <button className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 active:scale-95">
                           Book Consultation
                         </button>
-                        <button className={`px-6 py-3 rounded-full border font-bold transition-all hover:-translate-y-1 active:scale-95 ${darkMode ? 'border-white/10 hover:bg-white/5' : 'border-slate-200 hover:bg-slate-50'}`}>
+                        <a 
+                          href="/images/Parth_Chauhan_QA-resume.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`inline-flex items-center justify-center px-6 py-3 rounded-full border font-bold transition-all hover:-translate-y-1 active:scale-95 ${darkMode ? 'border-white/10 hover:bg-white/5' : 'border-slate-200 hover:bg-slate-50'}`}>
                           View Resume
-                        </button>
+                        </a>
                       </div>
                     </motion.div>
                   </section>
