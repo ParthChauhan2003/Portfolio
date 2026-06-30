@@ -234,7 +234,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
         }}
         whileHover={{ scale: 1.05, x: -5 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-[9999] flex items-center group"
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex items-center group"
         id="projects-floating-tab"
       >
         <div className="relative flex items-center">
