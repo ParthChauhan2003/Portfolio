@@ -55,7 +55,7 @@ export const CertsTools: React.FC<CertsToolsProps> = ({ darkMode }) => {
                 scale: 1.02,
                 transition: { duration: 0.3, ease: "easeOut" }
               }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ 
                 layout: { duration: 0.3 },
                 opacity: { duration: 0.5, delay: index * 0.1 },

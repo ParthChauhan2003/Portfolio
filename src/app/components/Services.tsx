@@ -90,7 +90,7 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className={`p-6 rounded-2xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-gray-800 border-gray-700 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-blue-100'}`}
               >
@@ -113,7 +113,7 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             whileHover={{ y: -10, scale: 1.02 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4 }}
             className={`p-8 rounded-3xl border transition-shadow duration-300 hover:shadow-2xl ${darkMode ? 'bg-red-500/15 border-red-500/40 hover:shadow-red-500/20' : 'bg-red-50 border-red-200 hover:shadow-red-200'}`}
           >
@@ -137,7 +137,7 @@ export const Services: React.FC<ServicesProps> = ({ darkMode }) => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             whileHover={{ y: -10, scale: 1.02 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4 }}
             className={`p-8 rounded-3xl border transition-shadow duration-300 hover:shadow-2xl ${darkMode ? 'bg-green-500/15 border-green-500/40 hover:shadow-green-500/20' : 'bg-green-50 border-green-200 hover:shadow-green-200'}`}
           >

@@ -398,7 +398,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                           key={i}
                           initial={{ opacity: 0, x: 20 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
+                          viewport={{ once: true, margin: "-50px" }}
                           transition={{ delay: i * 0.1 }}
                           className={`group p-6 rounded-3xl border transition-all hover:-translate-y-1 ${darkMode ? 'bg-white/5 border-white/10 hover:border-blue-500/30' : 'bg-white border-slate-100 shadow-sm hover:shadow-xl hover:border-blue-200'}`}
                         >
@@ -429,7 +429,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                           key={i}
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
+                          viewport={{ once: true, margin: "-50px" }}
                           transition={{ delay: i * 0.05 }}
                           whileHover={{ scale: 1.1, backgroundColor: darkMode ? 'rgba(59, 130, 246, 0.2)' : 'rgba(59, 130, 246, 0.1)' }}
                           className={`px-4 py-2 rounded-xl text-sm font-bold border transition-colors cursor-default ${darkMode ? 'bg-white/5 border-white/10 text-slate-300' : 'bg-slate-50 border-slate-200 text-slate-700'}`}
@@ -453,7 +453,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                           key={i}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
+                          viewport={{ once: true, margin: "-50px" }}
                           className="relative pl-8 border-l-2 border-blue-500/20"
                         >
                           <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.5)]" />
@@ -491,7 +491,7 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                           key={i}
                           initial={{ opacity: 0, y: 30 }}
                           whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
+                          viewport={{ once: true, margin: "-50px" }}
                           whileHover={{ y: -5 }}
                           className={`group p-8 rounded-[32px] border transition-all ${darkMode ? 'bg-white/5 border-white/10 hover:bg-white/10' : 'bg-slate-50 border-slate-200 hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10'}`}
                         >
