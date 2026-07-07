@@ -330,17 +330,31 @@ export const FloatingSideProjects: React.FC<FloatingSideProjectsProps> = ({ dark
                       <p className={`text-lg font-light leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
                         I partner with fast-scaling startups to uncover critical issues early and ensure seamless digital experiences at every release.
                       </p>
-                      <div className="flex flex-wrap gap-4 pt-2">
-                        <button className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 active:scale-95">
-                          Book Consultation
-                        </button>
-                        <a 
-                          href="/images/Parth_Chauhan_QA-resume.pdf"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`inline-flex items-center justify-center px-6 py-3 rounded-full border font-bold transition-all hover:-translate-y-1 active:scale-95 ${darkMode ? 'border-white/10 hover:bg-white/5' : 'border-slate-200 hover:bg-slate-50'}`}>
-                          View Resume
-                        </a>
+                      <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                        <MagneticButton>
+                          <button 
+                            onClick={() => {
+                              setIsOpen(false);
+                              setTimeout(() => {
+                                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                              }, 400);
+                            }}
+                            className="inline-flex justify-center items-center px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-600 hover:from-blue-600 hover:via-indigo-600 hover:to-violet-700 text-white font-medium transition-all shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 gap-2 w-full sm:w-auto"
+                          >
+                            Book Consultation
+                            <ArrowRight size={18} />
+                          </button>
+                        </MagneticButton>
+                        <MagneticButton>
+                          <a 
+                            href="/images/Parth_Chauhan_QA-resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex justify-center items-center px-8 py-3 rounded-full border font-medium transition-all gap-2 w-full sm:w-auto ${darkMode ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-50 bg-white'}`}
+                          >
+                            View Resume
+                          </a>
+                        </MagneticButton>
                       </div>
                     </motion.div>
                   </section>
