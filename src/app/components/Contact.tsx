@@ -341,13 +341,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                       scale: 1.02,
                       transition: { duration: 0.3, ease: "easeOut" }
                     }}
-                    style={{ 
-                      backfaceVisibility: 'hidden', 
-                      WebkitBackfaceVisibility: 'hidden',
-                      transformStyle: 'preserve-3d',
-                      WebkitTransformStyle: 'preserve-3d',
-                      transform: 'translateZ(0)'
-                    }}
+                    style={{ backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}
                     className={`p-4 rounded-xl border transition-colors transition-shadow duration-300 group cursor-default relative overflow-hidden ${
                       darkMode 
                         ? 'bg-gray-800 border-gray-700 hover:border-blue-500/50 hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)]' 
@@ -420,10 +414,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
                 scale: submitSuccess ? 1.03 : 1
               }}
               transition={{ duration: 0.8, ease: "easeInOut" }}
-              style={{ 
-                transformStyle: 'preserve-3d',
-                WebkitTransformStyle: 'preserve-3d'
-              }}
+              style={{ transformStyle: 'preserve-3d' }}
               className={`relative w-full rounded-3xl transition-shadow duration-500 ${
                 submitSuccess && darkMode 
                   ? 'shadow-[0_0_40px_rgba(59,130,246,0.2)]' 
@@ -434,11 +425,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
             >
               {/* Front (Form) */}
               <div 
-                style={{ 
-                  backfaceVisibility: 'hidden',
-                  WebkitBackfaceVisibility: 'hidden',
-                  transform: 'translateZ(0)'
-                }}
+                style={{ backfaceVisibility: 'hidden' }}
                 className={`w-full bg-transparent ${submitSuccess ? 'pointer-events-none' : ''}`}
                 aria-hidden={submitSuccess}
               >
@@ -614,13 +601,12 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
               <div 
                 style={{ 
                   backfaceVisibility: 'hidden', 
-                  WebkitBackfaceVisibility: 'hidden',
-                  transform: 'rotateY(180deg) translateZ(0)' 
+                  transform: 'rotateY(180deg)' 
                 }}
                 className={`absolute inset-0 z-20 flex flex-col items-center justify-center p-8 text-center rounded-3xl border overflow-hidden ${
                   darkMode 
-                    ? 'bg-gray-800 border-blue-500/30' 
-                    : 'bg-white border-blue-200'
+                    ? 'bg-gray-800/90 backdrop-blur-xl border-blue-500/30' 
+                    : 'bg-white/90 backdrop-blur-xl border-blue-200'
                 } ${!submitSuccess ? 'pointer-events-none' : ''}`}
                 aria-hidden={!submitSuccess}
               >
