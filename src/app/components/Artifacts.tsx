@@ -37,7 +37,7 @@ export const Artifacts: React.FC<ArtifactsProps> = ({ darkMode }) => {
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
@@ -54,7 +54,7 @@ export const Artifacts: React.FC<ArtifactsProps> = ({ darkMode }) => {
               key={index}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               className={`p-6 rounded-2xl border flex flex-col justify-between transition-all shadow-soft hover:shadow-hover hover:-translate-y-1 ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}
             >

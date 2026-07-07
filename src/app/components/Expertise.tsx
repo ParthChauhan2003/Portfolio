@@ -72,7 +72,7 @@ export const Expertise: React.FC<ExpertiseProps> = ({ darkMode }) => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className={`p-8 rounded-3xl border transition-all hover:-translate-y-2 ${darkMode ? 'bg-gray-900 border-gray-800 hover:border-indigo-500/30' : 'bg-white border-gray-100 shadow-sm hover:shadow-md hover:border-indigo-100'}`}
               >

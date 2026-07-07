@@ -325,7 +325,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="space-y-12"
           >
@@ -409,7 +409,7 @@ export const Contact: React.FC<ContactProps> = ({ darkMode }) => {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{ perspective: 1000 }}
           >
