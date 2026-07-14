@@ -49,6 +49,15 @@ ${message}
     res.status(200).json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
-    res.status(500).json({ success: false, message: 'Failed to send email' });
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to send email', 
+      error: error.message,
+      stack: error.stack,
+      envCheck: {
+        hasUser: !!process.env.EMAIL_USER,
+        hasPass: !!process.env.EMAIL_PASS
+      }
+    });
   }
 }
