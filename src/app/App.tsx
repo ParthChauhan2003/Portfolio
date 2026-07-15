@@ -40,8 +40,9 @@ export default function App() {
       return;
     }
 
-    const x = event.clientX;
-    const y = event.clientY;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
       Math.max(y, window.innerHeight - y)
